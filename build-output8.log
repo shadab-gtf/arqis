@@ -1,0 +1,48 @@
+﻿node.exe : npm warn 
+Unknown project config 
+"always-auth". This will 
+stop working in the next 
+major version of npm.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (npm warn Unknow...v   
+ ersion of npm.:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+   Γû▓ Next.js 15.5.7
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/(website)/[micr
+osite]/page.tsx
+Module not found: Can't 
+resolve '@/app/(website)/
+HorizontalLayout'
+
+https://nextjs.org/docs/m
+essages/module-not-found
+
+./src/app/about-us/page.j
+sx
+Module not found: Can't 
+resolve '../(website)/Hor
+izontalLayout'
+
+https://nextjs.org/docs/m
+essages/module-not-found
+
+
+> Build failed because 
+of webpack errors

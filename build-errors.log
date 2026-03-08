@@ -1,0 +1,78 @@
+﻿node.exe : npm warn 
+Unknown project config 
+"always-auth". This will 
+stop working in the next 
+major version of npm.
+At C:\Program 
+Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (npm warn Unknow...v   
+ ersion of npm.:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+   Γû▓ Next.js 15.5.7
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 8.6s
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/components/bloglist
+ing/BlogContainer.tsx:34:
+55
+Type error: Type '{ 
+blogList: { image: 
+string; heading: string; 
+date: string; slug: 
+string; }[]; mobVia: 
+any; }' is not 
+assignable to type 
+'IntrinsicAttributes & { 
+blogList: any; }'.
+  Property 'mobVia' does 
+not exist on type 
+'IntrinsicAttributes & { 
+blogList: any; }'.
+
+[0m [90m 32 |[39m     
+  [33m<[39m[33mScrollL
+ayout[39m
+ [90m 33 |[39m         
+leftContent[33m=[39m{[
+33m<[39m[33mContentSec
+[39m 
+[33m/[39m[33m>[39m}
+[31m[1m>[22m[39m[90m
+ 34 |[39m         rightC
+ontent[33m=[39m{[33m<
+[39m[33mListingSec[39m 
+blogList[33m=[39m{blogL
+ist} mobVia[33m=[39m{mo
+bVia} 
+[33m/[39m[33m>[39m}
+ [90m    |[39m         
+                         
+                     
+[31m[1m^[22m[39m
+ [90m 35 |[39m         
+isShowDrag[33m=[39m{[3
+6mtrue[39m}
+ [90m 36 |[39m         
+scrollableRef[33m=[39m{
+scrollableRef}
+ [90m 37 |[39m         
+isBgColor[33m=[39m{[36
+mtrue[39m}[0m
+Next.js build worker 
+exited with code: 1 and 
+signal: null

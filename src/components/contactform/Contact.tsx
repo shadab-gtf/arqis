@@ -1,0 +1,46 @@
+import React from "react";
+import CommonHeading from "@/utils/CommonHeading";
+import Image from "next/image";
+
+export default function contact() {
+  return (
+    <div className="custom-container m-auto h-[100%] flex flex-col justify-center">
+      <CommonHeading customClass={`text-[#113120] uppercase`} heading={`Get in touch`} />
+      <ul className="mt-[80px]">
+        <li className="mb-[30px]">
+          <a className="uppercase inline-flex gap-[20px]" href="mailto:mkt@ARQIS GROUP.in">
+            <Image
+              src={`/assets/icons/mail.svg`}
+              alt="youtube"
+              height={30}
+              width={30}
+            />
+            mkt@ARQIS GROUP.in
+          </a>
+        </li>
+        <li className="mb-[30px]">
+          <a className="uppercase inline-flex gap-[20px]" href="+91999999999">
+            <Image
+              src={`/assets/icons/telephone.svg`}
+              alt="telephone"
+              height={30}
+              width={30}
+            />
+            +91999999999
+          </a>
+        </li>
+        <li>
+          <a className="uppercase inline-flex gap-[20px]" href="#">
+            <Image
+              src={`/assets/icons/location.svg`}
+              alt="telephone"
+              height={30}
+              width={30}
+            />
+            Noida sector 25
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+}
