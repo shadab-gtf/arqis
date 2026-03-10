@@ -33,15 +33,15 @@ export default function ContentSec() {
     ]
   }
   return (
-    <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start pt-10 2xl:pt-12'>
+    <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start '>
       <CommonHeading customClass={'pb-[20px] 2xl:pb-[40px] pr-20 text-[#113120]'} heading={data.heading} />
       <Paragraph customClass='lg:mt-0 !mb-0 text-[#113120] ' paragraph={data.desc} />
       <div className='flex-content flex flex-wrap justify-between 2xl:pt-8 pt-5 gap-y-4 2xl:gap-y-6'>
         {
           data?.listing?.map((item, index) => <div key={index}
             className='box lg:w-[33%] text-center'>
-            <h4 className='title italic text-[#113120] tt-regular text-2xl 2xl:text-[32px]'>{item.title}</h4>
-            <p className='desc text-[11px] 2xl:text-[14px]'>{item.desc}</p>
+            <h4 className='title italic text-[#113120] tt-regular text-2xl 2xl:text-[28px]'>{item.title}</h4>
+            <p className='desc text-[11px] 2xl:text-[13px]'>{item.desc}</p>
           </div>)
         }
       </div>

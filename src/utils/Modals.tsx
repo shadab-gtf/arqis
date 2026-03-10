@@ -97,11 +97,11 @@ export default function Modals({
   return createPortal(
     <div
       ref={modalRef}
-      className="fixed bg-[#f7efe1f5] top-0 left-0 h-full w-full z-[999]"
+      className="modal-container fixed bg-[#f7efe1f5] top-0 left-0 h-full w-full z-[999]"
     >
       <div
         onClick={handleClose}
-        className="cross absolute cursor-pointer top-[80px] right-[100px]"
+        className="cross absolute cursor-pointer top-[20px] right-[20px] z-[99999]"
       >
         <Image
           src={`/assets/icons/cross.svg`}

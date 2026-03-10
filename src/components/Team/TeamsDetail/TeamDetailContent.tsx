@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import CommonHeading from "@/utils/CommonHeading";
 import Paragraph from "@/utils/Paragraph";
-export default function TeamDetailContent({onClose}) {
+export default function TeamDetailContent({ onClose }) {
 
   return (
     <div>

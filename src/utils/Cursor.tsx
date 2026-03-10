@@ -14,7 +14,7 @@ const CursorAnimation = () => {
   useEffect(() => {
     let animationFrame;
 
-    const lerp = (start, end, factor) => start + (end - start) * factor;
+    const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
 
     const animate = () => {
       cursorPos.current.x = lerp(cursorPos.current.x, mousePos.current.x, 0.15);
@@ -42,6 +42,11 @@ const CursorAnimation = () => {
           message: "",
           type: "scale-white",
         });
+        return;
+      }
+
+      if (closest(".cursor-dot")) {
+        setCursorState({ isHovering: true, message: "", type: "dot" });
         return;
       }
 
@@ -73,7 +78,7 @@ const CursorAnimation = () => {
 
       setCursorState({
         isHovering: false,
-        message: "Scroll Up", 
+        message: "Scroll Up",
         type: "default",
       });
     };
@@ -88,6 +93,16 @@ const CursorAnimation = () => {
 
   const getStyles = () => {
     switch (cursorState.type) {
+      case "dot":
+        return {
+          scale: 1,
+          width: "20px",
+          height: "20px",
+          borderRadius: "50%",
+          bg: "transparent",
+          textColor: "transparent",
+          border: "1px solid #064e3b",
+        };
       case "expand":
         return {
           scale: 1,

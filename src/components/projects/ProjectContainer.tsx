@@ -1,10 +1,11 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Image from "next/image";
 import CommonHeading from "@/utils/CommonHeading";
 import Redirect_Link from "@/utils/Redirect_txt";
+import { MapPin } from "lucide-react";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -32,76 +33,118 @@ const projects = [
     thumb: "/assets/projects/project2.webp",
     title: "Arqis Business Park",
     location: "sector 129 Noida",
-    desc: "Our upcoming mall is designed to be a premier destination, offering a dynamic shopping and entertainment experience."
+    desc: "Our upcoming mall is designed to be a premier destination, offering a dynamic shopping and entertainment experience. "
   },
 ];
 export default function ProjectContainer() {
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollToIndex = (index) => {
-    if (scrollRef.current) {
+  const scrollToIndex = (index: number) => {
+    if (scrollRef.current && index >= 0 && index < projects.length) {
       const cardWidth = scrollRef.current.offsetWidth * 0.9;
-
       gsap.to(scrollRef.current, {
-        scrollTo: { x: cardWidth * index },
-        duration: 0.8,
-        ease: "power2.out",
+        scrollTo: { x: cardWidth * index - scrollRef.current.offsetWidth * 0.05 },
+        duration: 1.2,
+        ease: "power4.inOut",
+        overwrite: "auto"
       });
-
       setActiveIndex(index);
     }
   };
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.offsetWidth * 0.9;
-      const currentScroll = scrollRef.current.scrollLeft;
-      const targetScroll =
-        direction === "next"
-          ? currentScroll + scrollAmount
-          : currentScroll - scrollAmount;
+  const isAnimating = useRef(false);
 
-      gsap.to(scrollRef.current, {
-        scrollTo: { x: targetScroll, autoKill: true },
-        duration: 0.8,
-        ease: "power2.out",
-      });
-    }
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
 
-    let newIndex =
-      direction === "next"
-        ? Math.min(activeIndex + 1, projects.length - 1)
-        : Math.max(activeIndex - 1, 0);
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
 
-    scrollToIndex(newIndex);
-  };
+      if (isAnimating.current) return;
+
+      if (Math.abs(e.deltaY) > 20 || Math.abs(e.deltaX) > 20) {
+        isAnimating.current = true;
+        const direction = e.deltaY > 0 || e.deltaX > 0 ? 1 : -1;
+        const newIndex = Math.max(0, Math.min(projects.length - 1, activeIndex + direction));
+
+        scrollToIndex(newIndex);
+
+        setTimeout(() => {
+          isAnimating.current = false;
+        }, 1200);
+      }
+    };
+
+    let touchStartX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      if (isAnimating.current) return;
+
+      const touchEndX = e.touches[0].clientX;
+      const diffX = touchStartX - touchEndX;
+
+      if (Math.abs(diffX) > 50) {
+        isAnimating.current = true;
+        const direction = diffX > 0 ? 1 : -1;
+        const newIndex = Math.max(0, Math.min(projects.length - 1, activeIndex + direction));
+
+        scrollToIndex(newIndex);
+
+        setTimeout(() => {
+          isAnimating.current = false;
+        }, 1200);
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      el.removeEventListener('wheel', handleWheel);
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [activeIndex]);
 
   return (
     <div className="parallax relative projects_container dark-section h-[100%] py-[80px] mx-auto max-h-[100vh] overflow-hidden">
-      <div className='absolute z-1 top-0 bottom-0 right-0 top-0 bottom-0 h-full w-full'
-        style={{ background: "url(/assets/cover-bg.png) no-repeat" }}
+      <div className='absolute z-1 inset-0 h-full w-full'
+        style={{
+          backgroundImage: "url(/assets/cover-bg.png)",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
       />
-      <div className="max-w-[80%] mx-auto overflow-hidden">
+      <div className="container mx-auto overflow-hidden">
         <div
           ref={scrollRef}
           data-scroll="horizontal"
-          className="flex lg:h-[349px] items-center scrollable-container overflow-x-scroll snap-x snap-mandatory relative z-2"
+          className="flex lg:h-[450px] items-center scrollable-container overflow-x-auto relative z-2"
+          style={{ scrollBehavior: 'smooth' }}
         >
           {projects.map((project) => (
             <div
               key={project.id}
-              className="project_card grow-0 shrink-0 basis-[100%] text-white pr-[20px]"
+              className="project_card flex-shrink-0 w-full text-white pr-[20px]"
             >
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-[30px] items-center">
 
                 {/* IMAGE */}
                 <div className="lg:col-span-3">
                   <Image
-                    className="h-[349px] w-full object-cover"
+                    className="h-[388px] w-full object-cover"
                     src={project.image}
-                    width={1200}
-                    height={300}
+                    width={1100}
+                    height={388}
                     alt="projectimage"
                   />
                 </div>
@@ -111,11 +154,14 @@ export default function ProjectContainer() {
                   <div className="">
                     <CommonHeading
                       heading={project.title}
-                      customClass="mb-0"
+                      customClass="mb-0 text-[52px]! tracking-[-2px]!"
                     />
-                    <span className="block uppercase">{project.location}</span>
+                    <div className="flex items-center gap-4">
+                      <MapPin className="w-6 h-6" />
+                      <span className="block  font-normal text-xl">{project.location}</span>
+                    </div>
                   </div>
-                  <p className="opacity-80 font-light py-8">{project.desc.slice(0, 100)}{project.desc.length > 100 ? '...' : ''}</p>
+                  <p className="opacity-80 font-light text-lg py-8">{project.desc.slice(0, 120)}{project.desc.length > 120 ? '...' : ''}</p>
 
                   <Redirect_Link
                     customClass="flex"
@@ -135,7 +181,7 @@ export default function ProjectContainer() {
             <div
               key={project.id}
               onClick={() => scrollToIndex(index)}
-              className={`cursor-pointer transition-all duration-300 w-[30%]
+              className={`cursor-pointer transition-all duration-300 
             ${activeIndex === index
                   ? "opacity-100"
                   : "opacity-70"
@@ -143,36 +189,36 @@ export default function ProjectContainer() {
             >
               <Image
                 src={project.thumb}
-                width={320}
-                height={100}
+                width={450}
+                height={120}
                 alt="thumbnail"
-                className="object-cover w-[100%] h-[100px]"
+                className="object-cover w-[450px] h-[120px]"
               />
             </div>
           ))}
         </div>
-
-        <div className="flex justify-end lg:flex hidden lg:absolute z-2 lg:pr-1 pr-[30px] right-[12%] !bottom-[70px] py-[30px] gap-[20px] items-center">
-          <Image
-            src="/assets/icons/arrow_right.png"
-            alt="Previous slide"
-            width={25}
-            height={25}
-            className="cursor-pointer arrow slide-arr"
-            onClick={() => scroll("prev")}
-          />
-          <Image
-            src="/assets/icons/arrow_left.png"
-            alt="Next slide"
-            width={25}
-            height={25}
-            className="cursor-pointer arrow slide-arr rotate-[90deg]"
-            onClick={() => scroll("next")}
-          />
-        </div>
+        {/* arrow but not needed */}
       </div>
     </div>
   );
 }
 
+{/* <div className="flex justify-end lg:flex hidden lg:absolute z-2 lg:pr-1 pr-[30px] right-[12%] !bottom-[70px] py-[30px] gap-[20px] items-center">
+  <Image
+    src="/assets/icons/arrow_right.png"
+    alt="Previous slide"
+    width={25}
+    height={25}
+    className="cursor-pointer arrow slide-arr"
+    onClick={() => scroll("prev")}
+  />
+  <Image
+    src="/assets/icons/arrow_left.png"
+    alt="Next slide"
+    width={25}
+    height={25}
+    className="cursor-pointer arrow slide-arr rotate-[90deg]"
+    onClick={() => scroll("next")}
+  />
+</div> */}
 

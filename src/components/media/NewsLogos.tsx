@@ -19,8 +19,15 @@ export default function NewsLogos() {
     "/assets/media-center/news/logo_1.png",
     "/assets/media-center/news/logo_2.png",
     "/assets/media-center/news/logo_4.png",
+    "/assets/media-center/news/logo_1.png",
     "/assets/media-center/news/logo_3.png",
-   
+    "/assets/media-center/news/logo_2.png",
+    "/assets/media-center/news/logo_4.png",
+    "/assets/media-center/news/logo_3.png",
+    "/assets/media-center/news/logo_2.png",
+    "/assets/media-center/news/logo_4.png",
+    "/assets/media-center/news/logo_3.png",
+
   ];
 
   const handleMouseEnter = (index) => {
@@ -34,7 +41,7 @@ export default function NewsLogos() {
   return (
     <div className="lg:pb-0 pb-[30px] 2xl:pt-[30px]">
       {/* Navigation Arrows */}
-      <div className="arrow_container  lg:block hidden flex gap-5 justify-start pb-[30px] fade-up">
+      <div className="arrow_container  flex gap-5 justify-start pb-[30px] fade-up">
         <div className="arrow_prev cursor-pointer">
           <Image
             src="/assets/icons/arrow_right.png"
@@ -82,21 +89,20 @@ export default function NewsLogos() {
           {logosArr.map((src, index) => (
             <SwiperSlide key={index} onClick={() => handleMouseEnter(index)}>
               <div
-                className={`flex justify-center items-center cursor-pointer fade-up py-[30px] relative ${
-                  hoveredSlide === index ? "z-[99999]" : ""
-                }`}
+                className={`flex justify-center items-center cursor-pointer fade-up h-[160px] relative ${hoveredSlide === index ? "z-[99999]" : ""
+                  }`}
               >
                 <Image
                   src={src}
                   alt={`Logo ${index + 1}`}
-                  height={120}
-                  width={120}
+                  height={110}
+                  width={100}
                   className={
                     src.includes("logo_1.png")
-                      ? "w-[100px] object-contain z-10"
+                      ? "w-[100px] object-cover z-10"
                       : src.includes("logo_2.png")
-                      ? "w-[400px] m-[auto] object-contain z-10"
-                      : "w-[50%] object-contain z-10"
+                        ? "w-[200px] m-[auto] object-contain z-10"
+                        : "w-[50%] object-cover z-10"
                   }
                 />
               </div>
@@ -116,14 +122,14 @@ export default function NewsLogos() {
             <Image
               src={src}
               alt={`Static Logo ${index + 1}`}
-              height={100}
-              width={100}
+              height={60}
+              width={60}
               className={
                 src.includes("logo_1.png")
-                  ? "w-[80px] object-contain"
+                  ? "w-[60px] object-contain"
                   : src.includes("logo_2.png")
-                  ? "w-[200px] m-[auto] object-contain"
-                  : "w-[80%] object-contain"
+                    ? "w-[60px] m-[auto] object-contain"
+                    : "w-[60%] object-contain"
               }
             />
           </div>

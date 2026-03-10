@@ -9,7 +9,7 @@ export default function BlogDetailContainer({ data }) {
     return (
         <div className='blog-detail'>
             <ScrollLayout
-                leftContent={<BlogImage />}
+                leftContent={<BlogImage image={data?.image} data={data} />}
                 rightContent={<BlogContent />}
                 isShowDrag={true}
                 scrollableRef={scrollableRef}

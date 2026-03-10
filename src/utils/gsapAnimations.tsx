@@ -224,9 +224,9 @@ export default function InitScrollSmoother(router: any) {
     const verticalScrollable = activeSection.querySelector(".scrollable-container");
 
     if (verticalScrollable && scrollDirection) {
-      const atBoundary = isAtScrollBoundary(verticalScrollable, scrollDirection === "forward" ? 1 : -1);
+      const atBoundary = isAtScrollBoundary(verticalScrollable as HTMLElement, scrollDirection === "forward" ? 1 : -1);
       if (!atBoundary) {
-        scrollToBoundary(verticalScrollable, scrollDirection);
+        scrollToBoundary(verticalScrollable as HTMLElement, scrollDirection);
         setTimeout(() => {
           isAnimating = false;
         }, 500);
@@ -422,7 +422,7 @@ export default function InitScrollSmoother(router: any) {
     return null;
   };
 
-  const isAtScrollBoundary = (el, deltaY, isHorizontal = false) => {
+  const isAtScrollBoundary = (el: HTMLElement, deltaY: number, isHorizontal = false) => {
     if (!el) return true;
     const tolerance = 10;
     if (isHorizontal) {

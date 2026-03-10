@@ -77,13 +77,13 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0;
 }
 
 .custom-container {
   max-width: 596px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0;
 }
 
 .font-inter {
@@ -120,7 +120,8 @@ body.active .icon {
 
 @media (max-width: 1600px) {
   .container {
-    padding: 0 15px;
+    padding: 0;
+    /* padding: 0 15px; */
   }
 }
 

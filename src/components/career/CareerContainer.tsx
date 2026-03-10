@@ -5,10 +5,10 @@ import Jobs from './Jobs'
 import ScrollLayout from '@/utils/ScrollLayout'
 import { useRef } from 'react'
 export default function CareerContainer() {
-        const scrollableRef = useRef(null);
-  
+  const scrollableRef = useRef(null);
+
   return (
-   <ScrollLayout
+    <ScrollLayout
       leftContent={<ContentSec />}
       rightContent={<Jobs />}
       scrollableRef={scrollableRef}

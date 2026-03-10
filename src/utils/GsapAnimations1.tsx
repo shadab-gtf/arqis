@@ -28,6 +28,15 @@ export default function initScrollSmoother(router: any) {
   const sections = gsap.utils.toArray<HTMLElement>(".horizontal-section .item");
   if (!sections.length) return { cleanup: () => { } };
 
+  const getInitialIndex = () => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      if (hash === '#blogs') return 4;
+    }
+    return 0;
+  };
+
+  let initialIndex = getInitialIndex();
   let currentIndex = 0;
   let isAnimating = false;
   const inTL = new WeakMap();
@@ -100,6 +109,16 @@ export default function initScrollSmoother(router: any) {
     footerTitle: first?.dataset.footerTitle || "Reshaping Real Estate",
     footerCta: first?.dataset.footerCta || "Start Journey",
   });
+
+  if (initialIndex > 0) {
+    setTimeout(() => {
+      const originalDuration = CONFIG.ANIM_DURATION;
+      CONFIG.ANIM_DURATION = 0.01;
+      goToSection(initialIndex, "forward").then(() => {
+        CONFIG.ANIM_DURATION = originalDuration;
+      });
+    }, 100);
+  }
 
   const scrollToBoundary = (container, direction) => {
     if (!container) return;
@@ -179,7 +198,7 @@ export default function initScrollSmoother(router: any) {
         // Fixed class toggles: Always apply based on current index for consistency
         // const activeIndices = microsite ? [1] : [1, 4, 7];
 
-        const activeIndices = microsite ? [0] : [0, 1, 2, 3, 4, 7];
+        const activeIndices = microsite ? [0] : [0, 1, 2, 3, 4, 5, 6, 7];
         const shouldActive = activeIndices.includes(index);
         document.body.classList.toggle("active", shouldActive);
 
@@ -300,9 +319,10 @@ export default function initScrollSmoother(router: any) {
       e.deltaY *
       (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1);
     const activeSection = sections[currentIndex];
-    const scrollContainer =
-      activeSection.querySelector(".scrollable-container") ||
-      document.querySelector(".horizontal-section");
+    const isModalOpen = document.querySelector(".modal-container");
+    const scrollContainer = isModalOpen
+      ? isModalOpen.querySelector(".scrollable-container")
+      : (activeSection.querySelector(".scrollable-container") || document.querySelector(".horizontal-section"));
 
     if (scrollContainer) {
       const isHorizontal = (scrollContainer as HTMLElement).dataset.scroll === "horizontal";
@@ -324,7 +344,7 @@ export default function initScrollSmoother(router: any) {
     }
 
     accum += delta;
-    if (Math.abs(accum) >= CONFIG.WHEEL_THRESHOLD) {
+    if (Math.abs(accum) >= CONFIG.WHEEL_THRESHOLD && !isModalOpen) {
       goToSection(
         currentIndex + (accum > 0 ? 1 : -1),
         accum > 0 ? "forward" : "backward"
@@ -344,9 +364,10 @@ export default function initScrollSmoother(router: any) {
     lastInputTime = now;
 
     const activeSection = sections[currentIndex];
-    const scrollContainer = activeSection.querySelector(
-      ".scrollable-container"
-    );
+    const isModalOpen = document.querySelector(".modal-container");
+    const scrollContainer = isModalOpen
+      ? isModalOpen.querySelector(".scrollable-container")
+      : activeSection.querySelector(".scrollable-container");
     if (
       scrollContainer &&
       !isAtScrollBoundary(
@@ -355,6 +376,8 @@ export default function initScrollSmoother(router: any) {
       )
     )
       return;
+
+    if (isModalOpen) return;
 
     if (["ArrowRight", "ArrowDown"].includes(e.key)) {
       e.preventDefault();
@@ -384,12 +407,13 @@ export default function initScrollSmoother(router: any) {
 
     const dy = e.touches[0].clientY - touchStartY;
     const activeSection = sections[currentIndex];
-    const scrollContainer = activeSection.querySelector(
-      ".scrollable-container"
-    );
+    const isModalOpen = document.querySelector(".modal-container");
+    const scrollContainer = isModalOpen
+      ? isModalOpen.querySelector(".scrollable-container")
+      : activeSection.querySelector(".scrollable-container");
     if (scrollContainer && !isAtScrollBoundary(scrollContainer, dy)) return;
 
-    if (Math.abs(dy) > CONFIG.TOUCH_THRESH && !hasMoved) {
+    if (Math.abs(dy) > CONFIG.TOUCH_THRESH && !hasMoved && !isModalOpen) {
       e.preventDefault();
       hasMoved = true;
       goToSection(

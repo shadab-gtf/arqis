@@ -5,10 +5,10 @@ import React from 'react'
 export default function TeamContent() {
   return (
     <div className='py-30  parallax'>
-      <CommonHeading heading={'The Minds That Shape Arqis.'}/>
+      <CommonHeading heading={'The Minds That Shape Arqis.'} />
       <div className='mt-30'>
-       <Redirect_Link text="explore team" link=""/>
-       </div>
+        <Redirect_Link text="explore team" link="" />
+      </div>
     </div>
   )
 }

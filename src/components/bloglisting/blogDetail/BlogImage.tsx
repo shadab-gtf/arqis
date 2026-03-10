@@ -3,10 +3,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-export default function BlogImage({ image }) {
+export default function BlogImage({ image, data }) {
   return (
     <div className='text-center'>
-      <Link href={"/"}
+      <Link href={"/#blogs"}
         className="flex items-center justify-end gap-2 tracking-[1px] uppercase pb-10"
         title='go back'
       >
