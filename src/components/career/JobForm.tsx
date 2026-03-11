@@ -65,12 +65,15 @@ export default function Form() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = e.currentTarget;
 
-    if (e.target instanceof HTMLInputElement && e.target.type === "file") {
+    if (
+      e.currentTarget instanceof HTMLInputElement &&
+      e.currentTarget.type === "file"
+    ) {
       setFormData((prev) => ({
         ...prev,
-        [name]: e.target.files?.[0] ?? null,
+        [name]: e.currentTarget.files?.[0] ?? null,
       }));
       return;
     }
