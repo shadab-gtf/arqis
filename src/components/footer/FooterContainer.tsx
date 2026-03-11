@@ -98,10 +98,10 @@ export default function FooterContainer() {
         </li>
       </ul>
 
-      <p className="text-center uppercase text-[normal] text-[14px] tracking-[2] text-[#000000B2] pt-[30px]">
+      <p className="text-center uppercase  text-[14px] tracking-[2] text-[#000000B2] pt-[30px]">
         copyright © ARQIS GROUP 2025.
       </p>
-      <p className="text-center uppercase text-[normal] text-[14px] tracking-[2] lg:leading-[normal] leading-[2.1] mt-2 text-[#000000B2] ">
+      <p className="text-center uppercase  text-[14px] tracking-[2] lg:leading-[normal] leading-[2.1] mt-2 text-[#000000B2] ">
         all rights reserved | crafted by gtf technologies
       </p>
     </div>

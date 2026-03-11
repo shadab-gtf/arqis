@@ -3,17 +3,32 @@ import CommonHeading from "@/utils/CommonHeading";
 import React, { useState } from "react";
 import Image from "next/image";
 
+type JobFormData = {
+  name: string;
+  email: string;
+  phone: string;
+  duration: string;
+  message: string;
+  resume: File | null;
+};
+
+type JobFormErrors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
+
+const initialFormData: JobFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  duration: "",
+  message: "",
+  resume: null,
+};
+
 export default function Form() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState<JobFormData>(initialFormData);
+  const [errors, setErrors] = useState<JobFormErrors>({});
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: JobFormErrors = {};
 
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
@@ -32,7 +47,7 @@ export default function Form() {
 
     const phoneRegex = /^\+?[\d\s-]{10,}$/;
     if (!formData.phone) {
-      newErrors.email = "Phone number is required";
+      newErrors.phone = "Phone number is required";
     } else if (!phoneRegex.test(formData.phone)) {
       newErrors.phone = "Invalid phone number";
     }
@@ -47,16 +62,30 @@ export default function Form() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (e.target instanceof HTMLInputElement && e.target.type === "file") {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: e.target.files?.[0] ?? null,
+      }));
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form submitted:", formData);
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData(initialFormData);
       setErrors({});
     }
   };
@@ -118,12 +147,11 @@ export default function Form() {
           <select
             className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${
               errors.phone ? "border-red-500" : ""}`}
-            placeholder="phone number"
-            type="tel"
-            name="phone"
-            value={formData.phone}
+            name="duration"
+            value={formData.duration}
             onChange={handleChange}
           >
+            <option value="">Select duration</option>
             <option value={"1 Year"}>1 Year</option>
             <option value={"2 Year"}>2 Year</option>
             <option value={"3 Year"}>3 Year</option>
@@ -153,10 +181,9 @@ export default function Form() {
             className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${
               errors.message ? "border-red-500" : ""
             }`}
-            placeholder="Message"
+            placeholder="Resume"
             type="file"
-            name="message"
-            value={formData.message}
+            name="resume"
             onChange={handleChange}
           />
           {errors.message && (

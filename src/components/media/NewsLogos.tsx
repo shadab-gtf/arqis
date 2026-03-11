@@ -112,7 +112,7 @@ export default function NewsLogos() {
       </div>
 
       {/* Static Images Outside Swiper Loop */}
-      <div className="static-logos-container border-t-[1px] border-[#000]  py-[50px] lg:hidden block mt-[50px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[60px] lg:gap-4 fade-up">
+      <div className="static-logos-container border-t-[1px] border-[#000]  py-[50px] lg:hidden  mt-[50px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[60px] lg:gap-4 fade-up">
         {logosArr.map((src, index) => (
           <div
             key={`static-${index}`}
