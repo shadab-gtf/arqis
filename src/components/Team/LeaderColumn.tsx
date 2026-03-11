@@ -32,7 +32,7 @@ export default function LeaderColumn({ members, activeId, onSelect }: LeaderColu
         <div className="flex flex-col w-full">
             <CommonHeading
                 heading="Vision Built. Purpose Led."
-                customClass="mb-4 text-[48px]! tracking-[-2px]!"
+                customClass="mb-4 lg:text-[48px] md:text-[40px] sm:text-[32px] text-[28px] tracking-[-2px]!"
             />
             <div className="flex flex-col gap-10">
                 {members.map((member) => {
@@ -40,7 +40,7 @@ export default function LeaderColumn({ members, activeId, onSelect }: LeaderColu
                     return (
                         <div key={member.id} className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                             {/* Photo Frame */}
-                            <div className="w-[180px] h-[180px] md:w-[224px] md:h-[230px] flex-shrink-0 bg-white border border-[#113120]/15 overflow-hidden">
+                            <div className="w-[180px] h-[180px] md:w-[200px] md:h-[200px]  flex-shrink-0 bg-white border border-[#113120]/15 overflow-hidden">
                                 <div className="w-full h-full relative">
                                     <Image
                                         src={member.image}
@@ -53,10 +53,10 @@ export default function LeaderColumn({ members, activeId, onSelect }: LeaderColu
 
                             {/* Info */}
                             <div className="flex flex-col pt-2 sm:pt-0">
-                                <h3 className="text-xl md:text-[28px] text-[#113120] tt-light tracking-[1px]">
+                                <h3 className="text-xl md:text-[24px] lg:text-[28px] text-[#113120] tt-light tracking-[1px]">
                                     {member.name}
                                 </h3>
-                                <p className="text-[#113120] text-sm md:text-base tracking-[1px] mt-1 mb-6">
+                                <p className="text-[#113120] text-sm md:text-sm lg:text-base tracking-[1px] mt-1 mb-6">
                                     ({member.title})
                                 </p>
                                 <button

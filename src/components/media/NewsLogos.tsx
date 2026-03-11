@@ -39,7 +39,7 @@ export default function NewsLogos() {
   };
 
   return (
-    <div className="lg:pb-0 pb-[30px] 2xl:pt-[30px]">
+    <div className="lg:pb-0 pb-[30px] lg:pt-[30px]">
       {/* Navigation Arrows */}
       <div className="arrow_container  flex gap-5 justify-start pb-[30px] fade-up">
         <div className="arrow_prev cursor-pointer">
@@ -89,7 +89,7 @@ export default function NewsLogos() {
           {logosArr.map((src, index) => (
             <SwiperSlide key={index} onClick={() => handleMouseEnter(index)}>
               <div
-                className={`flex justify-center items-center cursor-pointer fade-up h-[160px] relative ${hoveredSlide === index ? "z-[99999]" : ""
+                className={`flex justify-center items-center cursor-pointer h-[120px] sm:h-[140px] md:h-[150px] lg:h-[160px] relative ${hoveredSlide === index ? "z-[99999]" : ""
                   }`}
               >
                 <Image

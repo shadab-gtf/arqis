@@ -1,6 +1,87 @@
+'use client'
+
 import CommonHeading from '@/utils/CommonHeading'
 import Paragraph from '@/utils/Paragraph'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+
+type CounterParts = {
+  value: number
+  suffix: string
+}
+
+function parseCounter(title: string): CounterParts {
+  const match = title.match(/([\d,.]+)(.*)/)
+
+  if (!match) {
+    return { value: 0, suffix: title }
+  }
+
+  return {
+    value: Number(match[1].replace(/,/g, '')),
+    suffix: match[2] || '',
+  }
+}
+
+function AnimatedCounter({ title }: { title: string }) {
+  const ref = useRef<HTMLHeadingElement | null>(null)
+  const [displayValue, setDisplayValue] = useState(0)
+  const { value, suffix } = parseCounter(title)
+
+  useEffect(() => {
+    const element = ref.current
+
+    if (!element) {
+      return
+    }
+
+    let frameId = 0
+    let hasAnimated = false
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAnimated) {
+          return
+        }
+
+        hasAnimated = true
+        const duration = 1800
+        const start = performance.now()
+
+        const animate = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1)
+          const easedProgress = 1 - Math.pow(1 - progress, 3)
+
+          setDisplayValue(Math.round(value * easedProgress))
+
+          if (progress < 1) {
+            frameId = window.requestAnimationFrame(animate)
+          }
+        }
+
+        frameId = window.requestAnimationFrame(animate)
+        observer.disconnect()
+      },
+      { threshold: 0.35 }
+    )
+
+    observer.observe(element)
+
+    return () => {
+      observer.disconnect()
+      window.cancelAnimationFrame(frameId)
+    }
+  }, [value])
+
+  return (
+    <h4
+      ref={ref}
+      className='title italic text-[#113120] tt-regular text-2xl lg:text-[36px]'
+    >
+      {displayValue.toLocaleString()}{suffix}
+    </h4>
+  )
+}
+
 export default function ContentSec() {
   const data = {
     heading: "Building with purpose, trust, and vision.",
@@ -34,14 +115,14 @@ export default function ContentSec() {
   }
   return (
     <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start '>
-      <CommonHeading customClass={'pb-[20px] 2xl:pb-[40px] pr-20 text-[#113120]'} heading={data.heading} />
+      <CommonHeading customClass={'pb-[20px] lg:pb-[40px] pr-20 text-[#113120]'} heading={data.heading} />
       <Paragraph customClass='lg:mt-0 !mb-0 text-[#113120] ' paragraph={data.desc} />
-      <div className='flex-content flex flex-wrap justify-between 2xl:pt-8 pt-5 gap-y-4 2xl:gap-y-6'>
+      <div className='flex-content flex flex-wrap justify-between lg:pt-8 pt-5 gap-y-4 lg:gap-y-6'>
         {
           data?.listing?.map((item, index) => <div key={index}
             className='box lg:w-[33%] text-center'>
-            <h4 className='title italic text-[#113120] tt-regular text-2xl 2xl:text-[28px]'>{item.title}</h4>
-            <p className='desc text-[11px] 2xl:text-[13px]'>{item.desc}</p>
+            <AnimatedCounter title={item.title} />
+            <p className='desc text-[11px] lg:text-xs'>{item.desc}</p>
           </div>)
         }
       </div>

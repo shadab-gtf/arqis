@@ -15,7 +15,7 @@ const Header = () => {
   if (!isClient) return null;
 
   return ReactDOM.createPortal(
-    <header className='py-8 2xl:py-[30px] z-[3] fixed left-0 top-0 w-[100%]'>
+    <header className='py-8 lg:py-[30px] z-[3] fixed left-0 top-0 w-[100%]'>
       <div className='container'>
         <div className='flex cursor-pointer justify-between items-center'>
           <Link

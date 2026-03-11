@@ -27,7 +27,7 @@ const Footer = () => {
     <>
       <footer
         ref={footerRef}
-        className={`fixed flex-wrap z-[3] w-full px-17 2xl:px-16 left-1/2 -translate-x-1/2 flex lg:flex-row flex-col gap-5 items-center lg:items-end lg:justify-between bottom-5 2xl:bottom-10 ${isMicrosite ? "change_style" : ""}`}
+        className={`fixed flex-wrap z-[3] w-full px-17 lg:px-16 left-1/2 -translate-x-1/2 flex lg:flex-row flex-col gap-5 items-center lg:items-end lg:justify-between bottom-5 lg:bottom-10 ${isMicrosite ? "change_style" : ""}`}
       >
         <h2
           ref={titleRef}

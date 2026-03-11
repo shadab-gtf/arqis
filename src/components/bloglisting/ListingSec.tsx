@@ -22,8 +22,8 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
                         />
                     </div>
                     <div className='footer'>
-                        <h3 className='capitalize py-4 2xl:text-[17px] text-[16px] tracking-[1px]'>{item.heading}</h3>
-                        <div className='flex items-center text-[12px] 2xl:text-[14px] tracking-[1px] opacity-50'>
+                        <h3 className='capitalize py-4 lg:text-[17px] text-[16px] tracking-[1px]'>{item.heading}</h3>
+                        <div className='flex items-center text-[12px] lg:text-[14px] tracking-[1px] opacity-50'>
                             <span className='block'>{item.date} | Blog </span>
                             <b className='block pl-px'>{index + 1}</b>
                         </div>

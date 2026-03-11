@@ -40,17 +40,17 @@ const ScrollLayout = ({
   }, []);
   return (
     <div className="grid grid-cols-1 relative  lg:pt-0 pt-[40px] md:grid-cols-2 overflow-y-hidden w-[100%]">
-      <div className={isPattern + `col-span-1 fade-up my-auto h-screen bg-[#FFF1DF]/20 px-10 2xl:px-16 py-20 2xl:py-30`}>
+      <div className={isPattern + `col-span-1 fade-up my-auto h-screen bg-[#FFF1DF] px-10 lg:px-16 py-20 lg:py-30`}>
         <div className={`custom-container `}>
           {leftContent}
           {isShowDrag && <DragComponent draggableAlign={draggableAlign} centerDragVia={centerDragVia} scrollableRef={scrollableRef} />}
         </div>
       </div>
       <div className='absolute z-1 top-0 bottom-0 right-0 h-full w-[50%]'
-        style={{ background: "url(/assets/cover-half.png)" }}
+        style={{ background: "url(/assets/cover-half.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
       />
-      <div ref={scrollableRef} data-scroll='vertical' className="col-span-1  lg:pb-0 pb-[60px]  2xl:pt-14 pt-[90px] px-10 relative  z-3 dark-section scrollable-container lg:max-h-screen parallax lg:h-screen  lg:overflow-y-scroll overflow-hidden">
-        <div className='2xl:py-0'>
+      <div ref={scrollableRef} data-scroll='vertical' className="col-span-1  lg:pb-0 pb-[60px]  lg:pt-14 pt-[90px] px-10 relative  z-3 dark-section scrollable-container lg:max-h-screen parallax lg:h-screen  lg:overflow-y-scroll overflow-hidden">
+        <div className='lg:py-0'>
           {rightContent}
         </div>
         <div className='h-[100px]' />
