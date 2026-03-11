@@ -192,10 +192,10 @@ export default function ProjectContainer() {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-[30px] items-center">
                   <div className="lg:col-span-3 overflow-hidden">
                     <Image
-                      className="project-card-image h-[320px] md:h-[400px] w-full object-cover"
+                      className="project-card-image h-[320px] md:h-[450px] w-full object-cover"
                       src={project.image}
                       width={1100}
-                      height={400}
+                      height={450}
                       alt={project.title}
                       priority={project.id === 1}
                     />

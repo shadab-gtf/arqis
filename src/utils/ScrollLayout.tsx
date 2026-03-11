@@ -11,6 +11,8 @@ interface ScrollLayoutProps {
   isPattern?: string;
   draggableAlign?: any;
   isBgColor?: boolean;
+  containerClassName?: string;
+  leftContentClassName?: string;
 }
 
 const ScrollLayout = ({
@@ -20,7 +22,9 @@ const ScrollLayout = ({
   scrollableRef,
   centerDragVia,
   isPattern = "",
-  draggableAlign
+  draggableAlign,
+  containerClassName = "",
+  leftContentClassName = ""
 }: ScrollLayoutProps) => {
   useEffect(() => {
     const handleScroll = () => {
@@ -39,9 +43,9 @@ const ScrollLayout = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="grid grid-cols-1 relative  lg:pt-0 pt-[40px] md:grid-cols-2 overflow-y-hidden w-[100%]">
-      <div className={isPattern + `col-span-1 fade-up my-auto h-screen bg-[#FFF1DF] px-10 lg:px-16 py-20 lg:py-30`}>
-        <div className={`custom-container `}>
+    <div className={`grid grid-cols-1 relative lg:pt-0 pt-[40px] md:grid-cols-2 overflow-y-hidden w-[100%] ${containerClassName}`}>
+      <div className={isPattern + `col-span-1 fade-up my-auto h-screen bg-[#FFF1DF] px-10 lg:px-16 py-20 lg:py-24`}>
+        <div className={`custom-container flex justify-center items-center flex-col   ${leftContentClassName}`}>
           {leftContent}
           {isShowDrag && <DragComponent draggableAlign={draggableAlign} centerDragVia={centerDragVia} scrollableRef={scrollableRef} />}
         </div>

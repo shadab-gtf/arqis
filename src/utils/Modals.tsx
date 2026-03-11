@@ -117,6 +117,8 @@ export default function Modals({
         scrollableRef={scrollableRef}
         isShowDrag={true}
         centerDragVia={centerDragVia}
+        containerClassName="pt-0"
+        leftContentClassName="ml-20!"
       />
     </div>,
     document.body

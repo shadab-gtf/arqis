@@ -115,14 +115,14 @@ export default function ContentSec() {
   }
   return (
     <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start '>
-      <CommonHeading customClass={'pb-[20px] lg:pb-[40px] pr-20 text-[#113120]'} heading={data.heading} />
+      <CommonHeading customClass={'pb-[20px] pt-6  lg:pb-[40px] lg:pr-24 text-[#113120]'} heading={data.heading} />
       <Paragraph customClass='lg:mt-0 !mb-0 text-[#113120] ' paragraph={data.desc} />
       <div className='flex-content flex flex-wrap justify-between lg:pt-8 pt-5 gap-y-4 lg:gap-y-6'>
         {
           data?.listing?.map((item, index) => <div key={index}
             className='box lg:w-[33%] text-center'>
             <AnimatedCounter title={item.title} />
-            <p className='desc text-[11px] lg:text-xs'>{item.desc}</p>
+            <p className='desc text-xs lg:text-xs'>{item.desc}</p>
           </div>)
         }
       </div>
