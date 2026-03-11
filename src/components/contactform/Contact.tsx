@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function contact() {
   return (
-    <div className="custom-container m-auto h-[100%] flex flex-col justify-center">
+    <div className="custom-container m-auto h-[100%] flex flex-col gap-10 mt-20! justify-center">
       <CommonHeading customClass={`text-[#113120] uppercase`} heading={`Get in touch`} />
-      <ul className="mt-[80px]">
+      <ul className="mt-[40px]">
         <li className="mb-[30px]">
           <a className="uppercase inline-flex gap-[20px]" href="mailto:mkt@ARQIS GROUP.in">
             <Image
@@ -29,7 +29,7 @@ export default function contact() {
             +91999999999
           </a>
         </li>
-        <li>
+        <li className="mb-[30px]">
           <a className="uppercase inline-flex gap-[20px]" href="#">
             <Image
               src={`/assets/icons/location.svg`}

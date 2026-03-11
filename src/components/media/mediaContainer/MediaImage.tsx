@@ -19,13 +19,13 @@ export default function MediaLogo({ selectedImage }: MediaLogoProps) {
 
   return (
     <div className="flex min-h-[calc(100vh-400px)] flex-col text-[#fbf2e6]">
-      <div className="flex flex-1 items-center justify-end ">
+      <div className="flex flex-1 items-center justify-end " style={{ marginRight: "100px" }}>
         <Image
           src={selectedImage || ""}
           alt="Selected media logo"
           width={170}
           height={180}
-          className={`h-auto mr-20!  ${logoSizeClass} object-contain`}
+          className={`h-auto mx-auto  ${logoSizeClass} object-contain`}
         />
       </div>
     </div>

@@ -22,9 +22,9 @@ export default function BlogImage({ image, data }) {
       <Image
         src={image || '/assets/blog/img1-lg.webp'}
         alt='blog'
-        className='w-[100%] m-auto'
-        height={300}
-        width={300}
+        className='w-[100%] m-auto mb-20'
+        height={600}
+        width={600}
       />
     </div>
   )
