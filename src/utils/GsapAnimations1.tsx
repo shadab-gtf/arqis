@@ -137,8 +137,12 @@ export default function initScrollSmoother(router: any) {
     if (index < 0 || index >= sections.length || isAnimating) return;
     isAnimating = true;
 
-    if (index === 0 || index === 2 || index === 3) {
+    if (index === 0) {
+      document.body.classList.add("hero-active");
+      document.body.classList.remove("extra-active");
+    } else if (index === 2 || index === 3) {
       document.body.classList.add("extra-active");
+      document.body.classList.remove("hero-active");
     } else {
       document.body.classList.remove("extra-active");
       document.body.classList.remove("hero-active");

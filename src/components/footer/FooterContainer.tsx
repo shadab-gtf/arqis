@@ -6,11 +6,11 @@ import ScrollContext from '@/context/ScrollContext';
 import { useContext } from "react";
 import AbsSec from "../common/absSec";
 export default function FooterContainer() {
-  const {gotoFn}=useContext(ScrollContext)
+  const { gotoFn } = useContext(ScrollContext)
   return (
-    <div className="container relative lg:h-[auto] h-screen lg:block flex justify-center flex-col  parallax">
+    <div className="container relative lg:h-[auto] cursor-dot h-screen lg:block flex justify-center flex-col  parallax">
       <div className="lg:hidden block">
-      <AbsSec abs_footer="abs_footer"/>
+        <AbsSec abs_footer="abs_footer" />
       </div>
       <figure>
         <Image
@@ -22,36 +22,36 @@ export default function FooterContainer() {
         />
       </figure>
       <div className="py_sm border-y-[#00000033] border-y-[1px] my-[50px] py-[30px]  lg:py-[60px]">
-        <ul className="grid gap-[25px] lg:gap-[35px] grid-cols-2 lg:max-w-[50%] mx-[auto]">
+        <ul className="grid gap-[25px] lg:gap-[35px] grid-cols-2 lg:max-w-[50%] mx-[auto] cursor-dot">
           <li className="col-span text-center">
-            <Link onClick={()=>gotoFn(0)} className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
+            <button onClick={() => gotoFn(0)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
               Home
-            </Link>
+            </button>
           </li>
           <li className="col-span text-center">
-            <Link  onClick={()=>gotoFn(3)} className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
-              Our Team 
-            </Link>
+            <button onClick={() => gotoFn(5)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
+              Our Team
+            </button>
           </li>
           <li className="col-span text-center">
-            <Link  onClick={()=>gotoFn(1)} className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
+            <button onClick={() => gotoFn(1)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
               Philosophy
-            </Link>
+            </button>
           </li>
           <li className="col-span text-center">
-            <Link onClick={()=>gotoFn(5)}   className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
+            <button onClick={() => gotoFn(4)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
               Careers
-            </Link>
+            </button>
           </li>
           <li className="col-span text-center">
-            <Link onClick={()=>gotoFn(2)} className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
+            <button onClick={() => gotoFn(2)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
               Projects
-            </Link>
+            </button>
           </li>
           <li className="col-span text-center">
-            <Link  onClick={()=>gotoFn(5)}  className="uppercase lg:text-[16px] text-[14px] tracking-[1.8]" href={"#"}>
+            <button onClick={() => gotoFn(3)} className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity">
               Media Centre
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

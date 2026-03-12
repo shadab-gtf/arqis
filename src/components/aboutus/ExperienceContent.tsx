@@ -8,7 +8,7 @@ import Redirect_Link from '@/utils/Redirect_txt';
 import MapSection from "./MapSection";
 export default function ExperienceContent({ mobVia }) {
   return (
-    <div className=" parallax">
+    <div className=" parallax px-6">
       {/* <CommonHeading
         customClass="text-[#FFD38F]"
         heading="Reshaping Real Estate with Clarity, Calm, and Conviction "
@@ -41,7 +41,7 @@ export default function ExperienceContent({ mobVia }) {
       <>
         <OurMission mobVia={mobVia} />
         <OurVission mobVia={mobVia} />
-        <Redirect_Link customClass={`mt-[50px] change_icon_clr  text-white`} text={`explore about us`} link={``} />
+        {/* <Redirect_Link customClass={`mt-[50px] change_icon_clr  text-white`} text={`explore about us`} link={``} /> */}
       </>
     </div>
   );

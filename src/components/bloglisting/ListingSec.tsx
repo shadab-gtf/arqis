@@ -7,8 +7,8 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
 
     return (
         <>
-            <div className='pt-10 grid gap-y-18 max-w-[63%] justify-end mx-auto' id="blog-listing">
-                {blogList.map((item, index) => <div
+            <div className='pt-16  grid gap-y-44 max-w-[65%] justify-end mx-auto' id="blog-listing">
+                {blogList.map((item: any, index: number) => <div
                     key={index}
                     className='p-4 bg-[#fff1df]'
                 >
@@ -29,7 +29,7 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
                         </div>
                         <Link
                             href={`/blog/${item.slug}`}
-                            className='flex items-center pt-5 uppercase tracking-[1px] gap-2'
+                            className='flex items-center py-8 uppercase read-more tracking-[1px] gap-2'
                         >read more
                             <Image
                                 className='arrow_container'

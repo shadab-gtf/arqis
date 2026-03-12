@@ -31,7 +31,7 @@ const projects: Project[] = [
     thumb: "/assets/projects/vipnamah.jpg",
     title: "VVIP Namah",
     location: "Aditya World City, NH-24, GZB",
-    desc: "VVIP Namah redefines luxury with meticulously crafted residences, offering unmatched elegance, comfort, and sophistication in a prime location, blending design with timeless appeal for a prestigious lifestyle.",
+    desc: "VVIP Namah redefines luxury with meticulously crafted residences, offering unmatched elegance.",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const projects: Project[] = [
     thumb: "/assets/projects/trident.jpg",
     title: "Trident Embassy",
     location: "Sector 1, Bisrakh , Greater Noida",
-    desc: "Trident Embassy offers luxurious residences with cutting-edge design and world-class amenities, blending elegance and convenience in a prime location for an exceptional living experience.",
+    desc: "Trident Embassy offers luxurious residences with cutting-edge design and world-class amenities.",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const projects: Project[] = [
     thumb: "/assets/projects/rajbagh.jpg",
     title: "Raj Bagh",
     location: "GT Road Raj Bagh Ghaziabad",
-    desc: "Our upcoming project at GT Road, Raj Bagh, Ghaziabad is set to become a landmark destination, offering a vibrant mix of shopping, dining, and entertainment.",
+    desc: "Our upcoming project at GT Road, Raj Bagh, Ghaziabad is set to become a landmark destination.",
   },
 ];
 
@@ -55,45 +55,27 @@ export default function ProjectContainer() {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
-  const isAnimating = useRef(false);
-  const unlockTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const clampIndex = (index: number) => {
-    return Math.max(0, Math.min(projects.length - 1, index));
-  };
+  const clampIndex = (index: number) =>
+    Math.max(0, Math.min(projects.length - 1, index));
 
   const goToSlide = (index: number) => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
 
-    if (!viewport || !track) {
-      return;
-    }
+    if (!viewport || !track) return;
 
     const nextIndex = clampIndex(index);
     const slideWidth = viewport.offsetWidth;
 
-    isAnimating.current = true;
     setActiveIndex(nextIndex);
 
     gsap.to(track, {
       x: -slideWidth * nextIndex,
-      duration: 0.2,
-      ease: "none",
-      overwrite: "auto",
-      onComplete: () => {
-        isAnimating.current = false;
-      },
+      duration: 0.4,
+      ease: "power2.out",
     });
-
-    if (unlockTimerRef.current) {
-      clearTimeout(unlockTimerRef.current);
-    }
-
-    unlockTimerRef.current = setTimeout(() => {
-      isAnimating.current = false;
-    }, 250);
   };
 
   useEffect(() => {
@@ -101,9 +83,7 @@ export default function ProjectContainer() {
       const track = trackRef.current;
       const viewport = viewportRef.current;
 
-      if (!track || !viewport) {
-        return;
-      }
+      if (!track || !viewport) return;
 
       gsap.set(track, { x: -viewport.offsetWidth * activeIndex });
     };
@@ -111,117 +91,92 @@ export default function ProjectContainer() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, [activeIndex]);
 
   useEffect(() => {
     const activeSlide = slideRefs.current[activeIndex];
-
-    if (!activeSlide) {
-      return;
-    }
+    if (!activeSlide) return;
 
     const image = activeSlide.querySelector(".project-card-image");
-    const content = activeSlide.querySelector(".project-card-content");
     const title = activeSlide.querySelector(".project-card-title");
     const location = activeSlide.querySelector(".project-card-location");
     const description = activeSlide.querySelector(".project-card-description");
     const cta = activeSlide.querySelector(".project-card-cta");
 
-    gsap.killTweensOf([image, content, title, location, description, cta]);
+    gsap.killTweensOf([image, title, location, description, cta]);
 
     gsap.fromTo(
       image,
-      { scale: 1.06, autoAlpha: 0.7 },
-      { scale: 1, autoAlpha: 1, duration: 0.9, ease: "power3.out" }
+      { scale: 1.05, autoAlpha: 0.7 },
+      { scale: 1, autoAlpha: 1, duration: 0.8 }
     );
 
-    const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    timeline.fromTo(
-      content,
-      { autoAlpha: 0.4 },
-      { autoAlpha: 1, duration: 0.25 }
-    );
-
-    timeline.fromTo(
+    gsap.fromTo(
       [title, location, description, cta],
-      { y: 28, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, duration: 0.65, stagger: 0.1 },
-      0
+      { y: 30, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1 }
     );
   }, [activeIndex]);
 
-  useEffect(() => {
-    return () => {
-      if (unlockTimerRef.current) {
-        clearTimeout(unlockTimerRef.current);
-      }
-    };
-  }, []);
+  const visibleButtons = [
+    (activeIndex + 1) % projects.length,
+    (activeIndex + 2) % projects.length,
+    (activeIndex + 3) % projects.length,
+  ];
 
   return (
-    <div className="parallax relative projects_container dark-section h-full py-[80px]  mx-auto overflow-hidden">
+    <div className="relative py-[80px] overflow-hidden text-white">
       <div
-        className="absolute z-1 inset-0 h-full w-full"
+        className="absolute inset-0"
         style={{
           backgroundImage: "url(/assets/cover-bg.png)",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       />
 
-      <div className="container mx-auto relative  z-2">
-        <div
-         
-          data-scroll="horizontal"
-          className="scrollable-container overflow-hidden"
-        >
-          <div ref={trackRef} className="flex will-change-transform mt-8">
+      <div className="container mx-auto relative z-10">
+        {/* PROJECT CARDS */}
+        <div className="overflow-hidden my-8">
+          <div ref={trackRef} className="flex">
             {projects.map((project, index) => (
               <article
                 key={project.id}
-                ref={(element) => {
-                  slideRefs.current[index] = element;
+                ref={(el) => {
+                  slideRefs.current[index] = el;
                 }}
-                className="project_card w-full shrink-0 text-white"
+                className="w-full shrink-0"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-[30px] items-center">
-                  <div className="lg:col-span-3 overflow-hidden">
-                    <Image
-                      className="project-card-image h-[320px] md:h-[450px] w-full object-cover"
-                      src={project.image}
-                      width={1100}
-                      height={450}
-                      alt={project.title}
-                      priority={project.id === 1}
-                    />
-                  </div>
+                <div className="grid  grid-cols-1 lg:grid-cols-[66%_34%] gap-6 lg:gap-[30px] items-center">
+                  <Image
+                    className="project-card-image h-[320px] md:h-[392px] lg:h-[495px] w-full object-cover"
+                    src={project.image}
+                    width={1200}
+                    height={392}
+                    alt={project.title}
+                  />
 
-                  <div className="project-card-content lg:col-span-1 flex min-h-[280px] flex-col justify-between">
+                  <div className="flex flex-col justify-between min-h-[280px]">
                     <div>
                       <CommonHeading
                         heading={project.title}
-                        customClass="project-card-title mb-0 !text-[32px] uppercase lg:!text-[40px] tt-light !tracking-[1px]"
+                        customClass="project-card-title !text-[32px] lg:!text-[40px]"
                       />
-                      <div className="project-card-location mt-4 flex items-center gap-3">
-                        <MapPin className="h-4 w-4 shrink-0" />
-                        <span className="block text-sm  font-light  tracking-[1px]">
-                          {project.location}
-                        </span>
+
+                      <div className="project-card-location mt-4 flex items-center gap-2">
+                        <MapPin size={16} />
+                        <span>{project.location}</span>
                       </div>
                     </div>
 
-                    <p className="project-card-description py-6  text-sm  font-light opacity-80">
+                    <p className="project-card-description py-6 opacity-80">
                       {project.desc}
                     </p>
 
                     <Redirect_Link
-                      customClass="project-card-cta flex"
                       text="Explore More"
+                      customClass="project-card-cta"
                       link=""
                     />
                   </div>
@@ -231,32 +186,30 @@ export default function ProjectContainer() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6" ref={viewportRef}>
-          {projects.map((project, index) => (
-            <button 
-            
-              key={project.id}
-              type="button"
-              onClick={() => goToSlide(index)}
-              className={`group relative overflow-hidden transition-all duration-300 ${
-                activeIndex === index ? "opacity-100" : "opacity-65 hover:opacity-90"
-              }`}
-            >
-              <Image
-                src={project.thumb}
-                width={450}
-                height={120}
-                alt={`${project.title} thumbnail`}
-                className="h-[110px] w-full object-cover lg:h-[120px]"
-              />
-              <div
-                className={`absolute inset-0 border transition-colors duration-300 ${
-                  activeIndex === index ? "border-none" : "border-none"
-                }`}
-              />
-            
-            </button>
-          ))}
+        {/* THUMBNAILS */}
+        <div
+          ref={viewportRef}
+          className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
+        >
+          {visibleButtons.map((index) => {
+            const project = projects[index];
+
+            return (
+              <button
+                key={project.id}
+                onClick={() => goToSlide(index)}
+                className="group overflow-hidden opacity-70 hover:opacity-100 transition"
+              >
+                <Image
+                  src={project.thumb}
+                  width={450}
+                  height={200}
+                  alt={project.title}
+                  className="h-[110px] button-img lg:h-[200px] w-full object-cover"
+                />
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

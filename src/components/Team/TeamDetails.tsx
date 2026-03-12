@@ -100,7 +100,7 @@ export default function TeamDetails({ member }: TeamDetailsProps) {
 
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center gap-2 mt-8 cursor-pointer! uppercase tracking-[2px] text-sm hover:opacity-80 transition-opacity mb-16 font-medium"
+        className="flex cursor-dot items-center gap-2 mt-8 cursor-pointer! uppercase tracking-[2px] text-sm hover:opacity-80 transition-opacity mb-16 font-medium"
       >
         READ {isExpanded ? "LESS" : "MORE"}
         <svg
@@ -118,7 +118,7 @@ export default function TeamDetails({ member }: TeamDetailsProps) {
         </svg>
       </button>
 
-      
+
 
       {/* Submembers */}
       {regularSubMembers.length > 0 && (

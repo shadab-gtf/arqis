@@ -28,7 +28,7 @@ export default function BlogContainer({ mobVia }) {
   const scrollableRef = useRef(null);
 
   return (
-    <section id='blogs'>
+    <section id='blogs' className='w-full'>
       <ScrollLayout
         leftContent={<ContentSec />}
         rightContent={<ListingSec blogList={blogList} mobVia={mobVia} />}

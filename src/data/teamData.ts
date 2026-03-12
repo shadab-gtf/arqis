@@ -36,11 +36,12 @@ diversified and reputed infrastructure group.
         title: "Director RR Build Town",
         image: "/assets/teams/team-2.png",
         bio: `Mr. Raj Sapra is a distinguished name in the Delhi real estate landscape, widely recognized for his contribution to premium residential development across West and North Delhi. With an active presence in the property market since 1986 he brings almost four decades of rich industry experience and ground-level expertise.
-
 A qualified Civil Engineer & Structure Engineer by profession, Mr. Sapra possesses deep technical knowledge combined with strong market insight. His engineering foundation enables him to ensure structural integrity, design efficiency, and long-term value in every project he undertakes.
-
 Over the years, he has successfully developed numerous residential properties across prominent locations including Pitampura, Punjabi Bagh, and Shalimar Bagh — areas known for their established communities and high-value real estate.
-
+His reputation is built on trust, quality construction, timely delivery, and a strong understanding of customer expectations. With a visionary approach and practical execution skills, Mr. Raj Sapra continues to contribute significantly to Delhi’s evolving residential infrastructure. 
+Mr. Raj Sapra is a distinguished name in the Delhi real estate landscape, widely recognized for his contribution to premium residential development across West and North Delhi. With an active presence in the property market since 1986 he brings almost four decades of rich industry experience and ground-level expertise.
+A qualified Civil Engineer & Structure Engineer by profession, Mr. Sapra possesses deep technical knowledge combined with strong market insight. His engineering foundation enables him to ensure structural integrity, design efficiency, and long-term value in every project he undertakes.
+Over the years, he has successfully developed numerous residential properties across prominent locations including Pitampura, Punjabi Bagh, and Shalimar Bagh — areas known for their established communities and high-value real estate.
 His reputation is built on trust, quality construction, timely delivery, and a strong understanding of customer expectations. With a visionary approach and practical execution skills, Mr. Raj Sapra continues to contribute significantly to Delhi’s evolving residential infrastructure.`,
         subMembers: [
             { id: "pankaj", name: "Mr. Pankaj Gupta", title: "Director RR Build Town", image: "/assets/teams/team-3.jpg" },
