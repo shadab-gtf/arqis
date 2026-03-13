@@ -7,7 +7,7 @@ const data = {
 };
 export default function ContentSec() {
   return (
-    <div className="fade-up m-auto h-[100%] flex flex-col gap-30 justify-center">
+    <div className="fade-up m-auto h-[100%] flex flex-col gap-10 justify-start">
       <div className="d"></div>
       <div className="lg:w-[80%] ">
         <CommonHeading customClass={""} heading={data.heading} />

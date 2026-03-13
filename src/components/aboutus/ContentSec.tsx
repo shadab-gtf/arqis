@@ -115,7 +115,7 @@ export default function ContentSec() {
   }
   return (
     <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start '>
-      <CommonHeading customClass={'pb-[20px] pt-6  lg:pb-[40px] lg:pr-24 text-[#113120]'} heading={data.heading} />
+      <CommonHeading customClass={'pb-[20px] pt-6  lg:pb-[40px] lg:pr-24 2xl:pr-60 text-[#113120]'} heading={data.heading} />
       <Paragraph customClass='lg:mt-0 !mb-0 text-[#113120] ' paragraph={data.desc} />
       <div className='flex-content flex flex-wrap justify-between lg:pt-8 pt-5 gap-y-4 lg:gap-y-6'>
         {

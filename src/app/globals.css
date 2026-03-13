@@ -81,7 +81,7 @@ body {
 }
 
 .custom-container {
-  max-width: 596px;
+  max-width: 570px;
   margin: 0 auto;
   padding: 0;
 }
@@ -147,6 +147,7 @@ body.active .icon {
 .change_icon_clr:hover img{
   transform: rotate(40deg);
 }
+
 @media (max-width: 1600px) {
   .container {
     padding: 0;
@@ -154,9 +155,27 @@ body.active .icon {
   }
 }
 
+/* for large device  */
 @media (min-width: 96rem) {
   .container {
-    max-width: 88rem;
+    max-width: 100rem; /* 1600px  */
+    
+  } 
+  .custom-container {
+    max-width: 100%; /* 1600px  */
+    padding: 40px 15px 0 0;
+
+  }
+  .large-desktop {
+   padding-left:  100px;
+   padding-right:  100px;
+  }
+  .scrollable-container {
+    max-width: 96%;
+  }
+  .desc{
+    font-size: 14px;
+    
   }
 }
 
@@ -335,17 +354,27 @@ input[type="file"]::-ms-browse {
   position: relative;
   height: 1px;
 }
-
+input {
+  font-size: 16px;
+  font-weight: 300;
+}
+input-placeholder {
+  font-size: 14px;
+  font-weight: 300;
+}
 @media (1200px <=width <=1450px) {
+  header.fixed :where(.logo img,.logo-white img) {
+    height: 60px !important;
+  }
   .drag_button {
     margin-top: 10px !important;
   }
-  .project-card-image{
+  /* .project-card-image{
     height: 420px;
   }
   .button-img{
     height: 170px;
-  }
+  } */
   #blog-listing{
     padding-top: 70px;
     gap: 140px;

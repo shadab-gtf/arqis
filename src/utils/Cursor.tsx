@@ -136,8 +136,8 @@ const CursorAnimation = () => {
       case "white":
         return {
           scale: 1,
-          width: "130px",
-          height: "130px",
+          width: "90px",
+          height: "90px",
           borderRadius: "50%",
           bg: "white",
           textColor: "#113120",
@@ -146,8 +146,8 @@ const CursorAnimation = () => {
       default:
         return {
           scale: 1,
-          width: "130px",
-          height: "130px",
+          width: "90px",
+          height: "90px",
           borderRadius: "50%",
           bg: "#113120",
           // bg: "#FFF1DF",

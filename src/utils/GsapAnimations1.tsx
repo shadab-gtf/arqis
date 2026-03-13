@@ -54,6 +54,29 @@ export default function initScrollSmoother(router: any) {
   // console.log()
   const microsite = router?.microsite;
 
+  const applyBodyStateForSection = (index: number) => {
+    if (index === 0) {
+      document.body.classList.add("hero-active");
+      document.body.classList.remove("extra-active");
+      return;
+    }
+
+    if (index === 2 || index === 3) {
+      document.body.classList.add("extra-active");
+      document.body.classList.remove("hero-active");
+      return;
+    }
+
+    document.body.classList.remove("extra-active");
+    document.body.classList.remove("hero-active");
+  };
+
+  const shouldDelayLogoReveal = (fromIndex: number, toIndex: number) =>
+    fromIndex === 0 && toIndex === 1;
+
+  const shouldHideLogoImmediately = (fromIndex: number, toIndex: number) =>
+    fromIndex === 1 && toIndex === 0;
+
   const isDarkSection = (section: HTMLElement) =>
     section?.dataset.theme === "dark" ||
     section?.classList.contains("dark-bg") || section?.classList.contains("bg-dark");
@@ -136,17 +159,11 @@ export default function initScrollSmoother(router: any) {
   const goToSection = async (index, scrollDirection = null) => {
     if (index < 0 || index >= sections.length || isAnimating) return;
     isAnimating = true;
-
-    if (index === 0) {
-      document.body.classList.add("hero-active");
-      document.body.classList.remove("extra-active");
-    } else if (index === 2 || index === 3) {
-      document.body.classList.add("extra-active");
-      document.body.classList.remove("hero-active");
-    } else {
-      document.body.classList.remove("extra-active");
-      document.body.classList.remove("hero-active");
-    }
+    const previousIndex = currentIndex;
+    const delayLogoRevealUntilComplete = shouldDelayLogoReveal(
+      previousIndex,
+      index
+    );
 
     const activeSection = sections[currentIndex];
     const verticalScrollable = activeSection.querySelector(
@@ -162,6 +179,12 @@ export default function initScrollSmoother(router: any) {
         setTimeout(() => (isAnimating = false), CONFIG.COOLDOWN_MS);
         return;
       }
+    }
+
+    if (shouldHideLogoImmediately(previousIndex, index)) {
+      applyBodyStateForSection(index);
+    } else if (!delayLogoRevealUntilComplete) {
+      applyBodyStateForSection(index);
     }
 
     const next = sections[index];
@@ -198,6 +221,10 @@ export default function initScrollSmoother(router: any) {
           sec.classList.toggle("is-active", i === index)
         );
         inTL.get(next)?.play();
+
+        if (delayLogoRevealUntilComplete) {
+          applyBodyStateForSection(index);
+        }
 
         // Fixed class toggles: Always apply based on current index for consistency
         // const activeIndices = microsite ? [1] : [1, 4, 7];

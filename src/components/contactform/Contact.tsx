@@ -6,7 +6,7 @@ export default function contact() {
   return (
     <div className="custom-container m-auto h-[100%] flex flex-col gap-10 mt-20! justify-center">
       <CommonHeading customClass={`text-[#113120] uppercase`} heading={`Get in touch`} />
-      <ul className="mt-[40px]">
+      <ul className="">
         <li className="mb-[30px]">
           <a className="uppercase inline-flex gap-[20px]" href="mailto:mkt@ARQIS GROUP.in">
             <Image

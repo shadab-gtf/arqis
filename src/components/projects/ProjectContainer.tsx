@@ -19,8 +19,8 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    image: "/assets/projects/mall.jpg",
-    thumb: "/assets/projects/mall.jpg",
+    image: "/assets/projects/arqis-mall.jpg",
+    thumb: "/assets/projects/arqis-mall.jpg",
     title: "Arqis Mall",
     location: "Sector 129, Noida",
     desc: "Our upcoming mall is designed to be a premier destination, offering a dynamic shopping and entertainment experience.",
@@ -55,6 +55,7 @@ export default function ProjectContainer() {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const slideRefs = useRef<Array<HTMLElement | null>>([]);
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const clampIndex = (index: number) =>
@@ -73,7 +74,7 @@ export default function ProjectContainer() {
 
     gsap.to(track, {
       x: -slideWidth * nextIndex,
-      duration: 0.4,
+      duration: 0.5,
       ease: "power2.out",
     });
   };
@@ -85,7 +86,9 @@ export default function ProjectContainer() {
 
       if (!track || !viewport) return;
 
-      gsap.set(track, { x: -viewport.offsetWidth * activeIndex });
+      gsap.set(track, {
+        x: -viewport.offsetWidth * activeIndex,
+      });
     };
 
     handleResize();
@@ -109,13 +112,13 @@ export default function ProjectContainer() {
     gsap.fromTo(
       image,
       { scale: 1.05, autoAlpha: 0.7 },
-      { scale: 1, autoAlpha: 1, duration: 0.8 }
+      { scale: 1, autoAlpha: 1, duration: 0.8 },
     );
 
     gsap.fromTo(
       [title, location, description, cta],
       { y: 30, autoAlpha: 0 },
-      { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1 }
+      { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1 },
     );
   }, [activeIndex]);
 
@@ -126,19 +129,18 @@ export default function ProjectContainer() {
   ];
 
   return (
-    <div className="relative py-[80px] overflow-hidden text-white">
+    <div className="relative large-desktop overflow-hidden text-white">
+      {/* Background */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: "url(/assets/cover-bg.png)",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
         }}
       />
 
-      <div className="container mx-auto relative z-10">
-        {/* PROJECT CARDS */}
-        <div className="overflow-hidden my-8">
+      <div className="container flex flex-col xl:gap-9 lg:gap-8 md:gap-6 justify-center mx-auto relative z-10 min-h-screen">
+        {/* MAIN SLIDER */}
+        <div className="overflow-hidden" ref={viewportRef}>
           <div ref={trackRef} className="flex">
             {projects.map((project, index) => (
               <article
@@ -148,29 +150,35 @@ export default function ProjectContainer() {
                 }}
                 className="w-full shrink-0"
               >
-                <div className="grid  grid-cols-1 lg:grid-cols-[66%_34%] gap-6 lg:gap-[30px] items-center">
-                  <Image
-                    className="project-card-image h-[320px] md:h-[392px] lg:h-[495px] w-full object-cover"
-                    src={project.image}
-                    width={1200}
-                    height={392}
-                    alt={project.title}
-                  />
+                <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6 lg:gap-[28px] items-stretch">
+                  {/* IMAGE */}
+                  <div className="w-full h-full overflow-hidden ">
+                    <Image
+                      className="project-card-image w-full  h-[51vh] object-cover"
+                      src={project.image}
+                      width={1200}
+                      height={588}
+                      alt={project.title}
+                    />
+                  </div>
 
-                  <div className="flex flex-col justify-between min-h-[280px]">
+                  {/* CONTENT */}
+                  <div className="flex flex-col justify-center gap-10 h-full">
                     <div>
                       <CommonHeading
                         heading={project.title}
-                        customClass="project-card-title !text-[32px] lg:!text-[40px]"
+                        customClass="project-card-title text-[1rem] sm:text-[2rem] md:text-[3.5rem]! lg:text-[3.8rem]!"
                       />
 
                       <div className="project-card-location mt-4 flex items-center gap-2">
-                        <MapPin size={16} />
-                        <span>{project.location}</span>
+                        <MapPin size={20} />
+                        <span className="font-normal text-base sm:text-lg lg:text-lg tracking-wide text-center uppercase">
+                          {project.location}
+                        </span>
                       </div>
                     </div>
 
-                    <p className="project-card-description py-6 opacity-80">
+                    <p className="project-card-description font-light text-base sm:text-lg lg:text-lg  opacity-80">
                       {project.desc}
                     </p>
 
@@ -187,10 +195,7 @@ export default function ProjectContainer() {
         </div>
 
         {/* THUMBNAILS */}
-        <div
-          ref={viewportRef}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
-        >
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {visibleButtons.map((index) => {
             const project = projects[index];
 
@@ -198,14 +203,14 @@ export default function ProjectContainer() {
               <button
                 key={project.id}
                 onClick={() => goToSlide(index)}
-                className="group overflow-hidden opacity-70 hover:opacity-100 transition"
+                className="group overflow-hidden opacity-70 hover:opacity-100 transition "
               >
                 <Image
                   src={project.thumb}
                   width={450}
-                  height={200}
+                  height={169}
                   alt={project.title}
-                  className="h-[110px] button-img lg:h-[200px] w-full object-cover"
+                  className="button-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </button>
             );

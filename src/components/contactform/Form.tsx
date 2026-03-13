@@ -86,7 +86,7 @@ export default function Form() {
       <form className="mt-[25px]" onSubmit={handleSubmit}>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${
               errors.name ? "border-red-500" : ""
             }`}
             placeholder="name"
@@ -101,7 +101,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${
               errors.email ? "border-red-500" : ""
             }`}
             placeholder="mail id"
@@ -116,7 +116,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${
               errors.phone ? "border-red-500" : ""
             }`}
             placeholder="phone number"
@@ -131,7 +131,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <textarea 
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] resize-vertical ${
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] resize-vertical ${
               errors.message ? "border-red-500" : ""
             }`}
             placeholder="Message"

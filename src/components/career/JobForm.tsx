@@ -100,7 +100,7 @@ export default function Form() {
       <form className="mt-[30px]" onSubmit={handleSubmit}>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.name ? "border-red-500" : ""
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.name ? "border-red-500" : ""
               }`}
             placeholder="name"
             type="text"
@@ -114,7 +114,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.email ? "border-red-500" : ""
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.email ? "border-red-500" : ""
               }`}
             placeholder="mail id"
             type="email"
@@ -128,7 +128,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""
               }`}
             placeholder="phone number"
             type="tel"
@@ -143,7 +143,7 @@ export default function Form() {
 
         <div className="input-container mb-[15px]">
           <select
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""}`}
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""}`}
             name="duration"
             value={formData.duration}
             onChange={handleChange}
@@ -159,7 +159,7 @@ export default function Form() {
         </div>
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.message ? "border-red-500" : ""
+            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] placeholder:text-sm px-[20px] placeholder:text-[#000] ${errors.message ? "border-red-500" : ""
               }`}
             placeholder="Message"
             type="text"
@@ -174,7 +174,7 @@ export default function Form() {
 
         <div className="input-container mb-[15px]">
           <input
-            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] px-[20px] placeholder:text-[#000] ${errors.message ? "border-red-500" : ""
+            className={`bg-[#fff] w-[100%] placeholder:uppercase py-[15px] placeholder:text-sm px-[20px] placeholder:text-[#000] ${errors.message ? "border-red-500" : ""
               }`}
             placeholder="Resume"
             type="file"

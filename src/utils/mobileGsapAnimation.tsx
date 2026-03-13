@@ -32,6 +32,17 @@ export default function initScrollSmoother(router: any) {
   const inTL = new WeakMap();
   const outTL = new WeakMap();
 
+  const applyLogoVisibilityForSection = (index: number) => {
+    document.body.classList.remove("extra-active");
+    document.body.classList.toggle("hero-active", index === 0);
+  };
+
+  const shouldDelayLogoReveal = (fromIndex: number, toIndex: number) =>
+    fromIndex === 0 && toIndex === 1;
+
+  const shouldHideLogoImmediately = (fromIndex: number, toIndex: number) =>
+    fromIndex === 1 && toIndex === 0;
+
   const CONFIG = {
     COOLDOWN_MS: 100,
     ANIM_DURATION: 1.1,
@@ -89,6 +100,7 @@ export default function initScrollSmoother(router: any) {
   });
 
   const first = sections[0];
+  applyLogoVisibilityForSection(currentIndex);
   emit("sliderstart", {
     index: 0,
     direction: "forward",
@@ -114,6 +126,11 @@ export default function initScrollSmoother(router: any) {
   const goToSection = async (index, scrollDirection = null) => {
     if (index < 0 || index >= sections.length || isAnimating) return;
     isAnimating = true;
+    const previousIndex = currentIndex;
+    const delayLogoRevealUntilComplete = shouldDelayLogoReveal(
+      previousIndex,
+      index
+    );
 
     const activeSection = sections[currentIndex];
     const verticalScrollable = activeSection.querySelector(
@@ -128,6 +145,12 @@ export default function initScrollSmoother(router: any) {
         scrollToBoundary(verticalScrollable, scrollDirection);
         return;
       }
+    }
+
+    if (shouldHideLogoImmediately(previousIndex, index)) {
+      applyLogoVisibilityForSection(index);
+    } else if (!delayLogoRevealUntilComplete) {
+      applyLogoVisibilityForSection(index);
     }
 
     const next = sections[index];
@@ -164,6 +187,10 @@ export default function initScrollSmoother(router: any) {
         );
         inTL.get(next)?.play();
         updateTheme(next);
+
+        if (delayLogoRevealUntilComplete) {
+          applyLogoVisibilityForSection(index);
+        }
 
         const navConfig = [
           {

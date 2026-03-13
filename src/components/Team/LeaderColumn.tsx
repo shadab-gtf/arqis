@@ -32,7 +32,7 @@ export default function LeaderColumn({ members, activeId, onSelect }: LeaderColu
         <div className="flex flex-col w-full">
             <CommonHeading
                 heading="Vision Built. Purpose Led."
-                customClass="mb-4 lg:text-[48px] md:text-[40px] sm:text-[32px] text-[28px] tracking-[-2px]!"
+                customClass=""
             />
             <div className="flex flex-col gap-10">
                 {members.map((member) => {

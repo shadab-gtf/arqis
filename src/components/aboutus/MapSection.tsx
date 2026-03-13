@@ -13,7 +13,7 @@ export default function MapSection() {
       className="relative mx-auto block aspect-[29/33] w-full max-w-[320px] overflow-hidden sm:max-w-[420px] md:max-w-[500px] lg:max-w-[580px] xl:max-w-[640px] 2xl:max-w-[700px]"
     >
       <Image
-        src="/assets/about/withlocation.png"
+        src="/assets/about/withpin.png"
         alt="experience"
         width={580}
         height={660}
@@ -24,7 +24,7 @@ export default function MapSection() {
         priority
       />
       <Image
-        src="/assets/about/withpin.png"
+        src="/assets/about/withlocation.png"
         alt="experience location"
         width={580}
         height={660}
