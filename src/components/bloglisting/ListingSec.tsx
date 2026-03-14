@@ -7,7 +7,7 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
 
     return (
         <>
-            <div className='pt-16  grid gap-y-44 max-w-[65%] justify-end mx-auto' id="blog-listing">
+            <div className='lg:pt-16 pt-[20px] pb-[80px] lg:pb-0 grid gap-y-16 md:gap-y-44 max-w-full md:max-w-[65%] justify-end mx-auto' id="blog-listing">
                 {blogList.map((item: any, index: number) => <div
                     key={index}
                     className='p-4 bg-[#fff1df]'

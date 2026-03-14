@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+   <body className={`${inter.variable} font-sans antialiased`}>
         <div id="header-portal" />
         <div id="footer-portal" />
         {children}

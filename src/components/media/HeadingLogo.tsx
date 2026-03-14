@@ -13,7 +13,7 @@ export default function HeadingLogo() {
     <div className="grid grid-cols-1 lg:grid-cols-2 lg:mt-20 md:mt-16 mt-12 ">
       <div className="col-span-1 ">
         <div className="lg:w-[70%] fade-up  lg:mb-0 mb-[40px]">
-          <h3 className="text-xl md:text-[36px] lg:text-[48px] text-[#FFD38F]  tt-light">
+          <h3 className="text-[30px] md:text-[36px] lg:text-[48px] text-[#FFD38F]  tt-light">
             Headlines. Stories. <br />
             Impact.
           </h3>

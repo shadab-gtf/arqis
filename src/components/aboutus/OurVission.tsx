@@ -2,30 +2,35 @@ import React from "react";
 import Image from "next/image";
 import CommonHeading from "@/utils/CommonHeading";
 import Paragraph from "@/utils/Paragraph";
-export default function OurMission({ mobVia }) {
+
+type OurVissionProps = {
+  mobVia?: number | boolean;
+};
+
+export default function OurVission({ mobVia }: OurVissionProps) {
   return (
-    <div className="pt-[60px]">
+    <div className="pt-12 md:pt-[60px]">
       <CommonHeading
         customClass={`${mobVia ? "text-[#000]" : "text-[#FFD38F]"}`}
         heading="Our Vission "
       />
-      <div className="m-[auto] my-[50px]">
+      <div className="mx-auto my-8 md:my-[50px]">
         <Image
-          src={"/assets/about/our_vission.png"}
+          src="/assets/about/our_vission.png"
           alt="experience"
-          className="w-[100%] arrow"
-          width={"643"}
+          className="w-full arrow"
+          width={643}
           height={468}
         />
       </div>
-      <div className="">
+      <div>
         <Paragraph
           customClass={`${mobVia ? "text-[#000]" : "text-[#fff]"}`}
-          paragraph="To conceptualize and deliver world-class spaces that combine timeless design, curated experiences, and strong investment fundamentals — creating lasting value for investors, businesses, and communities."
+          paragraph="To conceptualize and deliver world-class spaces that combine timeless design, curated experiences, and strong investment fundamentals, creating lasting value for investors, businesses, and communities."
         />
         <Paragraph
           customClass={`${mobVia ? "text-[#000]" : "text-[#fff]"}`}
-          paragraph="We are committed to precision in execution, transparency in relationships, and excellence in every detail — from planning and development to delivery and long-term asset performance."
+          paragraph="We are committed to precision in execution, transparency in relationships, and excellence in every detail, from planning and development to delivery and long-term asset performance."
         />
         <Paragraph
           customClass={`${mobVia ? "text-[#000]" : "text-[#fff]"}`}

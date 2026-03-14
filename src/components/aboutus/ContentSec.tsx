@@ -75,7 +75,7 @@ function AnimatedCounter({ title }: { title: string }) {
   return (
     <h4
       ref={ref}
-      className='title italic text-[#113120] tt-regular text-2xl lg:text-[36px]'
+      className='title tt-regular text-[26px] leading-none italic text-[#113120] sm:text-[30px] lg:text-[36px]'
     >
       {displayValue.toLocaleString()}{suffix}
     </h4>
@@ -84,47 +84,55 @@ function AnimatedCounter({ title }: { title: string }) {
 
 export default function ContentSec() {
   const data = {
-    heading: "Building with purpose, trust, and vision.",
-    desc: "Arqis Group is a testament to the seamless fusion of nature and luxury. With a deep-rooted passion for sustainable development, the group creates spaces that breathe life into every corner, blending the elegance of modern architecture with the serenity of the natural world. Their projects offer not just homes, but vibrant communities that inspire well-being, connection, and a harmonious way of life.",
+    heading: 'Building with purpose, trust, and vision.',
+    desc: 'Arqis Group is a testament to the seamless fusion of nature and luxury. With a deep-rooted passion for sustainable development, the group creates spaces that breathe life into every corner, blending the elegance of modern architecture with the serenity of the natural world. Their projects offer not just homes, but vibrant communities that inspire well-being, connection, and a harmonious way of life.',
     listing: [
       {
-        title: "40+",
-        desc: "Years Delivered with Excellence"
+        title: '40+',
+        desc: 'Years Delivered with Excellence',
       },
       {
-        title: "7",
-        desc: "Key Cities Covered"
+        title: '7',
+        desc: 'Key Cities Covered',
       },
       {
-        title: "100+",
-        desc: "Acres of Land Parcel"
+        title: '100+',
+        desc: 'Acres of Land Parcel',
       },
       {
-        title: "20M+",
-        desc: "Total Area Delivered (in  Sq.Ft )"
+        title: '20M+',
+        desc: 'Total Area Delivered (in Sq.Ft.)',
       },
       {
-        title: "10M+",
-        desc: "Upcoming ( Sq.Ft )"
+        title: '10M+',
+        desc: 'Upcoming (Sq.Ft.)',
       },
       {
-        title: "10M+",
-        desc: "Under construction (in sq. ft.)"
+        title: '10M+',
+        desc: 'Under construction (in sq. ft.)',
       },
-    ]
+    ],
   }
+
   return (
-    <div className='fade-up mr-auto max-w-[100%] flex flex-col justify-start '>
-      <CommonHeading customClass={'pb-[20px] pt-6  lg:pb-[40px] lg:pr-24 2xl:pr-60 text-[#113120]'} heading={data.heading} />
-      <Paragraph customClass='lg:mt-0 !mb-0 text-[#113120] ' paragraph={data.desc} />
-      <div className='flex-content flex flex-wrap justify-between lg:pt-8 pt-5 gap-y-4 lg:gap-y-6'>
-        {
-          data?.listing?.map((item, index) => <div key={index}
-            className='box lg:w-[33%] text-center'>
+    <div className='fade-up mr-auto flex w-full max-w-full flex-col justify-start'>
+      <CommonHeading
+        customClass='pb-4 pt-0 text-[#113120] lg:pb-[40px] lg:pr-24 2xl:pr-60'
+        heading={data.heading}
+      />
+      <Paragraph
+        customClass='!mb-0 max-w-[42rem] text-[#113120]'
+        paragraph={data.desc}
+      />
+      <div className='flex-content grid grid-cols-2 gap-x-4 gap-y-6 pt-6 sm:grid-cols-3 lg:pt-8 lg:gap-y-6'>
+        {data.listing.map((item, index) => (
+          <div key={index} className='box text-center'>
             <AnimatedCounter title={item.title} />
-            <p className='desc text-xs lg:text-xs'>{item.desc}</p>
-          </div>)
-        }
+            <p className='desc mx-auto mt-2 max-w-[10rem] text-[11px] leading-[1.5] sm:text-xs'>
+              {item.desc}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   )

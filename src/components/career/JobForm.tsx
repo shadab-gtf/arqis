@@ -92,7 +92,7 @@ export default function Form() {
   };
 
   return (
-    <div className="lg:pt-0 pt-[50px]">
+    <div className="lg:pt-0 pt-[50px] contact-form">
       <CommonHeading
         customClass={`text-[#FFD38F]`}
         heading={`Step Into Your Future`}

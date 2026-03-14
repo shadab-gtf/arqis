@@ -4,47 +4,51 @@ body {
 }
 
 img {
-  max-width: 100%
+  max-width: 100%;
 }
 
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'TT Ramillas';
-  src: url('/fonts/tt_ramillas/light.ttf') format('truetype');
+  font-family: "TT Ramillas";
+  src: url("/fonts/tt_ramillas/light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'TT Ramillas';
-  src: url('/fonts/tt_ramillas/regular.ttf') format('truetype');
+  font-family: "TT Ramillas";
+  src: url("/fonts/tt_ramillas/regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'TT Ramillas';
-  src: url('/fonts/tt_ramillas/medium.ttf') format('truetype');
+  font-family: "TT Ramillas";
+  src: url("/fonts/tt_ramillas/medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'TT Ramillas';
-  src: url('/fonts/tt_ramillas/bold.ttf') format('truetype');
+  font-family: "TT Ramillas";
+  src: url("/fonts/tt_ramillas/bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+@theme {
+  --font-sans: var(--font-inter-sans);
+}
+
 :root {
   --primary-green-color: #113120;
   --secondary-color: #ffe18f;
-  --primary: ""
+  --primary: "";
 }
 
 body {
@@ -56,22 +60,22 @@ body {
 }
 
 .tt-light {
-  font-family: 'TT Ramillas', serif;
+  font-family: "TT Ramillas", serif;
   font-weight: 300;
 }
 
 .tt-regular {
-  font-family: 'TT Ramillas', serif;
+  font-family: "TT Ramillas", serif;
   font-weight: 400;
 }
 
 .tt-medium {
-  font-family: 'TT Ramillas', serif;
+  font-family: "TT Ramillas", serif;
   font-weight: 500;
 }
 
 .tt-bold {
-  font-family: 'TT Ramillas', serif;
+  font-family: "TT Ramillas", serif;
   font-weight: 700;
 }
 
@@ -115,13 +119,17 @@ body.active .icon {
 }
 
 .beige_bg {
-  background: #FFF1DF;
+  background: #fff1df;
 }
-.project-card-cta:hover{
-  color: #FFD38F;
+
+.project-card-cta:hover {
+  color: #ffd38f;
 }
+
 .read-more {
-  transition: color 0.3s ease, transform 0.3s ease; 
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .read-more:hover {
@@ -129,22 +137,30 @@ body.active .icon {
 }
 
 .read-more:hover img {
-  transform: rotate(40deg); 
-}
-.submit-btn button{
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.submit-btn button:hover{
-  color: #FFD38F;
+  transform: rotate(40deg);
 }
 
-.change_icon_clr{
-  transition: color 0.3s ease, transform 0.3s ease;
+.submit-btn button {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
-.change_icon_clr:hover{
-  color: #FFD38F;
+
+.submit-btn button:hover {
+  color: #ffd38f;
 }
-.change_icon_clr:hover img{
+
+.change_icon_clr {
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.change_icon_clr:hover {
+  color: #ffd38f;
+}
+
+.change_icon_clr:hover img {
   transform: rotate(40deg);
 }
 
@@ -158,24 +174,27 @@ body.active .icon {
 /* for large device  */
 @media (min-width: 96rem) {
   .container {
-    max-width: 100rem; /* 1600px  */
-    
-  } 
-  .custom-container {
-    max-width: 100%; /* 1600px  */
-    padding: 40px 15px 0 0;
+    max-width: 100rem;
+    /* 1600px  */
+  }
 
+  .custom-container {
+    max-width: 100%;
+    /* 1600px  */
+    padding: 40px 15px 0 0;
   }
+
   .large-desktop {
-   padding-left:  100px;
-   padding-right:  100px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
+
   .scrollable-container {
     max-width: 96%;
   }
-  .desc{
+
+  .desc {
     font-size: 14px;
-    
   }
 }
 
@@ -199,7 +218,7 @@ body.active .icon {
 
 .border_line {
   /* background-color: #000; */
-  background: #FFFFFF66;
+  background: #ffffff66;
 }
 
 body .border_line {
@@ -211,7 +230,7 @@ footer * {
 }
 
 body.active .border_line {
-  background: #FFFFFF66;
+  background: #ffffff66;
   /* background: linear-gradient(45deg, black 40%, #fdfdfd 56%); */
 }
 
@@ -233,7 +252,6 @@ body.extra-active .prev_title {
   color: #fff;
 }
 
-
 body.extra-active .logo-black {
   display: none;
 }
@@ -250,7 +268,6 @@ body.extra-active .slide-arr,
 body.extra-active .btn-arr .arrow_container {
   filter: invert(1);
 }
-
 
 .change_style {
   align-items: center;
@@ -275,10 +292,12 @@ body.extra-active .btn-arr .arrow_container {
   opacity: 0.5;
 }
 
-.scrollable-container {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+@media (min-width: 768px) {
+  .scrollable-container {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
 }
 
 .overlay_gradient {
@@ -354,35 +373,41 @@ input[type="file"]::-ms-browse {
   position: relative;
   height: 1px;
 }
+
 input {
   font-size: 16px;
   font-weight: 300;
 }
+
 input-placeholder {
   font-size: 14px;
   font-weight: 300;
 }
+
 @media (1200px <=width <=1450px) {
-  header.fixed :where(.logo img,.logo-white img) {
+  header.fixed :where(.logo img, .logo-white img) {
     height: 60px !important;
   }
+
   .drag_button {
     margin-top: 10px !important;
   }
+
   /* .project-card-image{
     height: 420px;
   }
   .button-img{
     height: 170px;
   } */
-  #blog-listing{
+  #blog-listing {
     padding-top: 70px;
     gap: 140px;
     max-width: 69%;
     justify-content: end;
     margin: 0 auto;
   }
-  .footer a{
+
+  .footer a {
     padding: 18px 0;
   }
 }
@@ -490,7 +515,7 @@ input-placeholder {
 }
 
 .full-color .change_style .prev_title {
-  color: #fff
+  color: #fff;
 }
 
 .full-color .border_line {
@@ -498,7 +523,7 @@ input-placeholder {
 }
 
 .full-color footer h2 {
-  color: #fff
+  color: #fff;
 }
 
 .full-color footer img {
@@ -535,4 +560,137 @@ input-placeholder {
 
 .gallery_project_st .drag_button {
   margin: 0;
+}
+
+/* mobile devices css  */
+@media (280px <=width <=480px) {
+  body {
+    background-color: #F7EFE1;
+  }
+
+  .hero-active {
+    background-color: #f7efe1;
+  }
+
+  .mobile-line {
+    background-color: #000000;
+  }
+
+  .mobile-header {
+    padding: 10px;
+    height: 40px;
+  }
+
+  body.active .next_text h2 {
+    color: #000;
+  }
+
+  .mobile-device {
+    background-color: #F7EFE1;
+    padding-right: 10px;
+    padding-left: 10px;
+    z-index: 9999;
+  }
+
+  .parallax {
+    /* padding: 70px 0; */
+  }
+
+  .mobile-background {
+    background-color: #F7EFE1;
+  }
+
+  .btn-arr {
+    color: #000;
+  }
+
+  .job_cards {
+    padding: 0px;
+  }
+
+  .job-card {
+    border: 1px solid #000;
+    background-color: #fff;
+  }
+
+  .large-desktop {
+    padding: 12px;
+  }
+
+  .scrollable-container {
+    padding-top: 12px;
+  }
+
+  .job_cards h3,
+  .job_cards span {
+    color: #000;
+  }
+
+  .submit-btn button {
+    /* font-size: 14px; */
+    color: #000;
+    font-weight: 400;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .input-container input {
+    background-color: #FFF1DF;
+  }
+
+  .input-container select {
+    background-color: #FFF1DF;
+  }
+
+  .input-container textarea {
+    background-color: #FFF1DF;
+  }
+
+  .mobile-para,
+  .mobile-color h2 {
+    /* color: #000; */
+  }
+
+  .mobile-heading-2 {
+    padding: 0px 12px;
+  }
+
+  .container {
+    padding: 0px 12px;
+  }
+
+  /* .common-heading {
+    color: #000 !important;
+    font-size: 22px !important;
+  } */
+
+  .mobile-map {
+    /* background-color: #000; */
+    max-width: 100%;
+  }
+
+  .mobile-footer {
+    padding: 20px 0;
+  }
+
+  .mobile-container {
+    padding: 0 12px;
+  }
+
+  /* Projects Mobile Slider Dots */
+  .mobile-projects-swiper .swiper-pagination {
+    bottom: -5px !important;
+  }
+
+  .mobile-projects-swiper .swiper-pagination-bullet {
+    background: #000;
+    opacity: 0.3;
+  }
+
+  .mobile-projects-swiper .swiper-pagination-bullet-active {
+    background: #000;
+    opacity: 1;
+  }
 }

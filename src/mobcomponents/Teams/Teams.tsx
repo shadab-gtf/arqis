@@ -171,13 +171,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="px-[30px]">
+    <div className="px-[30px] py-20">
       {/* Inject custom styles */}
       <style>{styles}</style>
-      <div className="container relative">
+      <div className="container relative mobile-heading-2 ">
         <CommonHeading heading="Driven By Passion, United by Purpose" />
-        <div className="flex items-center gap-4 mt-4 mb-20">
-          {/* Default drag icon on progress bar */}
+        {/* <div className="flex items-center gap-4 mt-4 mb-20">
+          
           <div className="relative flex-1">
             <div className="custom-progress mt-0" ref={progressBarRef}>
               <Image
@@ -201,7 +201,7 @@ export default function App() {
             alt="drag-cursor"
             className="custom-cursor"
           />
-        </div>
+        </div> */}
 
         <Swiper
           effect="cards"
@@ -216,13 +216,13 @@ export default function App() {
             swiperRef.current = swiper;
           }}
         >
-          <SwiperSlide className="!h-[600px]">
+          <SwiperSlide className="!h-[450px] md:!h-[600px]">
             <TeamCard bg="bg-[#ecebda]" image="/assets/teams/teams_1.png" />
           </SwiperSlide>
-          <SwiperSlide className="!h-[600px]">
+          <SwiperSlide className="!h-[450px] md:!h-[600px]">
             <TeamCard bg="bg-[#90c9a3]" image="/assets/teams/teams_2.png" />
           </SwiperSlide>
-          <SwiperSlide className="!h-[600px]">
+          <SwiperSlide className="!h-[450px] md:!h-[600px]">
             <TeamCard bg="bg-[#b7d6bb]" image="/assets/teams/teams_3.png" />
           </SwiperSlide>
         </Swiper>

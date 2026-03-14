@@ -39,7 +39,7 @@ export default function NewsLogos() {
   };
 
   return (
-    <div className="lg:pb-0 pb-[30px] lg:pt-[30px]">
+    <div className="lg:pb-0 hidden pb-[30px] lg:pt-[30px]">
       {/* Navigation Arrows */}
       <div className="arrow_container  flex gap-5 justify-start pb-[30px] fade-up">
         <div className="arrow_prev cursor-pointer">
@@ -112,7 +112,7 @@ export default function NewsLogos() {
       </div>
 
       {/* Static Images Outside Swiper Loop */}
-      <div className="static-logos-container border-t-[1px] border-[#000]  py-[50px] lg:hidden  mt-[50px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[60px] lg:gap-4 fade-up">
+      <div className="static-logos-container border-t-[1px] border-[#000]  py-[50px] lg:hidden  mt-[50px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[30px] md:gap-y-[60px] lg:gap-4 fade-up">
         {logosArr.map((src, index) => (
           <div
             key={`static-${index}`}

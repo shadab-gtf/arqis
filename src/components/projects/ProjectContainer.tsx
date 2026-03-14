@@ -6,6 +6,10 @@ import Image from "next/image";
 import CommonHeading from "@/utils/CommonHeading";
 import Redirect_Link from "@/utils/Redirect_txt";
 import { MapPin } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 type Project = {
   id: number;
@@ -129,18 +133,19 @@ export default function ProjectContainer() {
   ];
 
   return (
-    <div className="relative large-desktop overflow-hidden text-white">
-      {/* Background */}
+    <div className="relative large-desktop overflow-hidden text-black md:text-white pb-10 md:pb-0">
+      {/* Background (Desktop Only) */}
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center hidden md:block"
         style={{
           backgroundImage: "url(/assets/cover-bg.png)",
         }}
       />
 
-      <div className="container flex flex-col xl:gap-9 lg:gap-8 md:gap-6 justify-center mx-auto relative z-10 min-h-screen">
-        {/* MAIN SLIDER */}
-        <div className="overflow-hidden" ref={viewportRef}>
+      <div className="container px-5 sm:px-8 lg:px-10 xl:px-0 flex flex-col xl:gap-9 lg:gap-8 md:gap-6 justify-center mx-auto relative z-10 md:min-h-screen mt-6 md:mt-0">
+        
+        {/* MAIN SLIDER (DESKTOP) */}
+        <div className="overflow-hidden hidden md:block" ref={viewportRef}>
           <div ref={trackRef} className="flex">
             {projects.map((project, index) => (
               <article
@@ -167,7 +172,7 @@ export default function ProjectContainer() {
                     <div>
                       <CommonHeading
                         heading={project.title}
-                        customClass="project-card-title text-[1rem] sm:text-[2rem] md:text-[3.5rem]! lg:text-[3.8rem]!"
+                        customClass="project-card-title text-[24px] sm:text-[2rem] md:text-[3.5rem]! lg:text-[3.8rem]!"
                       />
 
                       <div className="project-card-location mt-4 flex items-center gap-2">
@@ -194,8 +199,8 @@ export default function ProjectContainer() {
           </div>
         </div>
 
-        {/* THUMBNAILS */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        {/* THUMBNAILS (DESKTOP) */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {visibleButtons.map((index) => {
             const project = projects[index];
 
@@ -216,6 +221,42 @@ export default function ProjectContainer() {
             );
           })}
         </div>
+
+        {/* MOBILE SLIDER */}
+        <div className="block md:hidden pb-[40px] w-full mt-4 mobile-projects-swiper">
+          <Swiper
+            spaceBetween={15}
+            slidesPerView={1.15}
+            modules={[Pagination]}
+            pagination={{ clickable: true }}
+            className="w-full !pb-[40px]"
+          >
+            {projects.map((project, index) => (
+              <SwiperSlide key={`mob-${project.id}`}>
+                <div className="flex flex-col gap-5">
+                  <Image
+                    className="w-full h-[380px] object-cover"
+                    src={project.image}
+                    width={500}
+                    height={500}
+                    alt={project.title}
+                  />
+                  <div className="flex flex-col justify-between py-2 gap-[40px]">
+                    <h3 className="uppercase text-[16px] tracking-[2px] text-black font-medium">
+                      {project.title}
+                    </h3>
+                    <Redirect_Link
+                      text="Explore Project"
+                      customClass="project-card-cta !text-black text-[14px] uppercase tracking-widest"
+                      link="" 
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
       </div>
     </div>
   );

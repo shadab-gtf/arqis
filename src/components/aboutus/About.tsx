@@ -1,14 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import ContentSec from "./ContentSec";
 import ExperienceContent from "./ExperienceContent";
 import ScrollLayout from "@/utils/ScrollLayout";
-import { useRef } from "react";
 import OurMission from "./OurMission";
 import OurVission from "./OurVission";
 import Redirect_Link from "@/utils/Redirect_txt";
 
-export default function About({ mobVia }) {
-  const scrollableRef = useRef(null);
+type AboutProps = {
+  mobVia?: number | boolean;
+};
+
+export default function About({ mobVia }: AboutProps) {
+  const scrollableRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
@@ -20,14 +25,16 @@ export default function About({ mobVia }) {
         isBgColor={true}
       />
       {!!mobVia && (
-        <div className="custom-container  !pb-[80px]">
-          <OurMission mobVia={mobVia} />
-          <OurVission mobVia={mobVia} />
-          <Redirect_Link
-            customClass={`mt-[50px]   text-black `}
-            text={`explore about us`}
-            link={``}
-          />
+        <div className="px-5 pb-[64px] sm:px-6">
+          <div className="custom-container">
+            <OurMission mobVia={mobVia} />
+            <OurVission mobVia={mobVia} />
+            <Redirect_Link
+              customClass="mt-10 text-black"
+              text="explore about us"
+              link=""
+            />
+          </div>
         </div>
       )}
     </>

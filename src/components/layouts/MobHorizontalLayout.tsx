@@ -2,7 +2,6 @@
 // import "./globals.css";
 import Header from "@/components/common/header";
 import AbsSec from "@/components/common/absSec";
-import Footer from "@/components/common/footer";
 import { useLayoutEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import initScrollSmoother from "@/utils/mobileGsapAnimation";

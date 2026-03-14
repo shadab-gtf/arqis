@@ -14,10 +14,10 @@ const Header = () => {
   if (!isClient) return null;
 
   return ReactDOM.createPortal(
-    <header className="w-full large-desktop py-8 lg:py-[30px] z-[3] fixed left-0 top-0 ">
+    <header className="w-full  large-desktop py-2 mobile-device lg:py-[30px] z-[3] fixed left-0 top-0 ">
       <div className="container">
-        <div className="flex cursor-pointer justify-between items-center">
-          <Link className="logo" onClick={() => gotoFn(0)} href={"#"}>
+        <div className="flex cursor-pointer mobile-header justify-between items-center">
+          <Link className="logo invisible lg:visible" onClick={() => gotoFn(0)} href={"#"}>
             <Image
               src="/assets/arqis-black.svg"
               className="logo-black hide-logo-from-hero h-[75px] w-full"
@@ -25,19 +25,19 @@ const Header = () => {
               height={80}
               quality={100}
               alt="logo"
-              // sizes="(max-width: 640px) 120px, (max-width: 768px) 85px, 239px"
+            // sizes="(max-width: 640px) 120px, (max-width: 768px) 85px, 239px"
             />
             <Image
               src="/assets/arqis-white.svg"
               className="logo-white hide-logo-from-hero h-[75px] w-full"
-                width={229}
-                height={80}
+              width={229}
+              height={80}
               quality={100}
               alt="logo"
-              // sizes="(max-width: 640px) 120px, (max-width: 768px) 85px, 239px"
+            // sizes="(max-width: 640px) 120px, (max-width: 768px) 85px, 239px"
             />
           </Link>
-          <div className="flex cursor-pointer items-center gap-10">
+          <div className="flex cursor-pointer items-center gap-10 ">
             {/* <Image src='/assets/sound.svg' className='icon span_3 arrow cursor-pointer ' width={'25'} height={25} alt="logo" /> */}
             <div className="flex cursor-pointer  items-center gap-2">
               <span className="uppercase text cursor-pointer span_1  tracking-[2px]">
