@@ -6,7 +6,7 @@ import TeamDetails from "@/components/Team/TeamDetails";
 import { teamData } from "@/data/teamData";
 
 export default function TeamContainer() {
-  const scrollableRef = useRef(null);
+  const scrollableRef = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState(teamData[0].id);
 
   const activeMember = teamData.find(m => m.id === activeId) || teamData[0];
@@ -22,7 +22,11 @@ export default function TeamContainer() {
         />
       }
       rightContent={
-        <TeamDetails member={activeMember} />
+        <TeamDetails
+          key={activeMember.id}
+          member={activeMember}
+          scrollContainerRef={scrollableRef}
+        />
       }
       isShowDrag={false}
     />

@@ -12,7 +12,7 @@ export default function ContentSec() {
       <div className="lg:w-[80%] ">
         <CommonHeading customClass={""} heading={data.heading} />
         <Paragraph
-          customClass="lg:mt-10 lg:text-lg!  md:mt-8 sm:mt-7 lg:mb-15 md:mb-10 sm:mb-8 text-[#113120]  "
+          customClass="lg:mt-10 desktop-margin lg:text-lg!  md:mt-8 sm:mt-7 lg:mb-15 md:mb-10 sm:mb-8 text-[#113120]  "
           paragraph={data.desc}
         />
       </div>

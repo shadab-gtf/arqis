@@ -30,7 +30,7 @@ export default function page() {
         <div className="basis-[100%] bg-[var(--primary-green-color)] overflow-hidden  flex   item grow-0 shrink-0 h-full">
           <Image
             src="/assets/green-leaf.png"
-            className={`w-[40%] absolute w-[40%]    leaf_icon z-[999] lg:w-[20%]  left-0 lg:top-0 top-[0px]`}
+            className={`w-[40%] absolute  leaf_icon z-[999] lg:w-[20%]  left-0 lg:top-0 top-[0px]`}
             alt="logo"
             width={288}
             height={208}

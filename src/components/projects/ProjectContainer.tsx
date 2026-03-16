@@ -142,8 +142,8 @@ export default function ProjectContainer() {
         }}
       />
 
-      <div className="container px-5 sm:px-8 lg:px-10 xl:px-0 flex flex-col xl:gap-9 lg:gap-8 md:gap-6 justify-center mx-auto relative z-10 md:min-h-screen mt-6 md:mt-0">
-        
+      <div className="container px-5 sm:px-8 lg:px-10 xl:px-0 flex flex-col xl:gap-5 lg:gap-8 md:gap-6 justify-center mx-auto relative z-10 md:min-h-screen mt-6 md:mt-0">
+
         {/* MAIN SLIDER (DESKTOP) */}
         <div className="overflow-hidden hidden md:block" ref={viewportRef}>
           <div ref={trackRef} className="flex">
@@ -159,10 +159,10 @@ export default function ProjectContainer() {
                   {/* IMAGE */}
                   <div className="w-full h-full overflow-hidden ">
                     <Image
-                      className="project-card-image w-full  h-[51vh] object-cover"
+                      className="project-card-image w-full  h-[421px] object-cover"
                       src={project.image}
                       width={1200}
-                      height={588}
+                      height={421}
                       alt={project.title}
                     />
                   </div>
@@ -172,7 +172,7 @@ export default function ProjectContainer() {
                     <div>
                       <CommonHeading
                         heading={project.title}
-                        customClass="project-card-title text-[24px] sm:text-[2rem] md:text-[3.5rem]! lg:text-[3.8rem]!"
+                        customClass="project-card-title text-[24px] sm:text-[2rem] md:text-[3.5rem]! "
                       />
 
                       <div className="project-card-location mt-4 flex items-center gap-2">
@@ -213,9 +213,9 @@ export default function ProjectContainer() {
                 <Image
                   src={project.thumb}
                   width={450}
-                  height={169}
+                  height={156}
                   alt={project.title}
-                  className="button-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="button-img w-full h-[156px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </button>
             );
@@ -248,7 +248,7 @@ export default function ProjectContainer() {
                     <Redirect_Link
                       text="Explore Project"
                       customClass="project-card-cta !text-black text-[14px] uppercase tracking-widest"
-                      link="" 
+                      link=""
                     />
                   </div>
                 </div>

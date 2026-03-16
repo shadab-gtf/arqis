@@ -20,9 +20,13 @@ interface Member {
 
 interface TeamDetailsProps {
   member: Member;
+  scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
 }
 
-export default function TeamDetails({ member }: TeamDetailsProps) {
+export default function TeamDetails({
+  member,
+  scrollContainerRef,
+}: TeamDetailsProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -32,9 +36,43 @@ export default function TeamDetails({ member }: TeamDetailsProps) {
   const regularSubMembers =
     member.subMembers?.filter((sub) => sub.id !== "sahil") ?? [];
 
-  // Animate details entry on member change
+  // Reset the detail view whenever the selected member changes.
   useEffect(() => {
+    const scrollDetailsToTop = () => {
+      const detailsContainer = containerRef.current;
+      const scrollContainer = scrollContainerRef?.current;
+
+      if (scrollContainer && detailsContainer) {
+        const nextTop =
+          scrollContainer.scrollTop +
+          detailsContainer.getBoundingClientRect().top -
+          scrollContainer.getBoundingClientRect().top;
+
+        scrollContainer.scrollTo({
+          top: Math.max(nextTop, 0),
+          behavior: "smooth",
+        });
+        return;
+      }
+
+      if (detailsContainer) {
+        const nextTop =
+          detailsContainer.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: Math.max(nextTop, 0),
+          behavior: "smooth",
+        });
+      }
+    };
+
     setIsExpanded(false);
+    if (contentRef.current) {
+      gsap.set(contentRef.current, { height: 0, opacity: 0 });
+    }
+
+    scrollDetailsToTop();
+
     if (containerRef.current) {
       gsap.fromTo(
         containerRef.current,
@@ -42,7 +80,7 @@ export default function TeamDetails({ member }: TeamDetailsProps) {
         { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
       );
     }
-  }, [member.id]);
+  }, [member.id, scrollContainerRef]);
 
   // Animate read more / read less
   useEffect(() => {

@@ -194,7 +194,11 @@ body.active .icon {
   }
 
   .desc {
+    line-height: 1;
+    text-wrap: nowrap;
+    letter-spacing: -0.29px;
     font-size: 14px;
+    color: #242424;
   }
 }
 
@@ -410,6 +414,9 @@ input-placeholder {
   .footer a {
     padding: 18px 0;
   }
+  .media{
+    padding-top: 0 ;
+  }
 }
 
 @media (max-width: 1580px) {
@@ -431,6 +438,12 @@ input-placeholder {
 
   .drag_button {
     margin-top: 50px;
+    /* 50px */
+  }
+
+  .desktop-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .parallax h2 {
