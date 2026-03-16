@@ -15,7 +15,7 @@ const Header = () => {
 
   return ReactDOM.createPortal(
     <header className="w-full  large-desktop py-2 mobile-device lg:py-[30px] z-[3] fixed left-0 top-0 ">
-      <div className="container">
+      <div className="container  xl:ml-16! 2xl:ml-0!">
         <div className="flex cursor-pointer mobile-header justify-between items-center">
           <Link className="logo invisible lg:visible" onClick={() => gotoFn(0)} href={"#"}>
             <Image

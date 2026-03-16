@@ -195,8 +195,6 @@ body.active .icon {
 
   .desc {
     line-height: 1;
-    text-wrap: nowrap;
-    letter-spacing: -0.29px;
     font-size: 14px;
     color: #242424;
   }
@@ -417,6 +415,7 @@ input-placeholder {
   .media{
     padding-top: 0 ;
   }
+ 
 }
 
 @media (max-width: 1580px) {

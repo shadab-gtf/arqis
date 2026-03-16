@@ -8,7 +8,7 @@ import AbsSec from "../common/absSec";
 export default function FooterContainer() {
   const { gotoFn } = useContext(ScrollContext);
   return (
-    <div className="container relative lg:h-[auto] mobile-footer cursor-dot h-[auto]  md:h-screen lg:block flex justify-center flex-col  parallax">
+    <div className="container relative lg:h-[auto] mobile-footer cursor-pointer h-[auto]  md:h-screen lg:block flex justify-center flex-col  parallax">
       <div className="lg:hidden block">
         <AbsSec abs_footer="abs_footer" />
       </div>
@@ -22,11 +22,11 @@ export default function FooterContainer() {
         />
       </figure>
       <div className="py_sm border-y-[#00000033] border-y-[1px] my-[50px] py-[30px]  lg:py-[60px]">
-        <ul className="grid gap-[25px] lg:gap-[35px] grid-cols-2 lg:max-w-[50%] mx-[auto] cursor-dot">
+        <ul className="grid gap-[25px] lg:gap-[35px] grid-cols-2 lg:max-w-[50%] mx-[auto] cursor-pointer">
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(0)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               Home
             </button>
@@ -34,7 +34,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(4)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
             Blogs
             </button>
@@ -42,7 +42,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(1)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               About Us
             </button>
@@ -50,7 +50,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(5)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               Careers
             </button>
@@ -58,7 +58,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(2)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               Projects
             </button>
@@ -66,7 +66,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(6)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
             Our Team
             </button>
@@ -74,7 +74,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(3)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               Media Centre
             </button>
@@ -82,7 +82,7 @@ export default function FooterContainer() {
           <li className="col-span text-center">
             <button
               onClick={() => gotoFn(8)}
-              className="uppercase cursor-dot lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
+              className="uppercase cursor-pointer lg:text-[16px] text-[14px] tracking-[1.8] hover:opacity-70 transition-opacity"
             >
               Contact
             </button>
