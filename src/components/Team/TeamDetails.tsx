@@ -35,8 +35,6 @@ export default function TeamDetails({
   );
   const regularSubMembers =
     member.subMembers?.filter((sub) => sub.id !== "sahil") ?? [];
-
-  // Reset the detail view whenever the selected member changes.
   useEffect(() => {
     const scrollDetailsToTop = () => {
       const detailsContainer = containerRef.current;
@@ -82,7 +80,6 @@ export default function TeamDetails({
     }
   }, [member.id, scrollContainerRef]);
 
-  // Animate read more / read less
   useEffect(() => {
     if (!contentRef.current) return;
 
@@ -110,12 +107,12 @@ export default function TeamDetails({
   return (
     <div
       ref={containerRef}
-      className="flex flex-col w-full text-white pt-10 px-4 md:px-0 max-w-2xl opacity-0"
+      className="flex flex-col w-full text-white pt-10 lg:pt-20 px-4 md:px-0 max-w-2xl opacity-0"
     >
       <div className="text-sm md:text-[15px] leading-[1.8] tracking-wide text-[#E8E8E8]">
         {/* Always show the first paragraph, apply line-clamp when NOT expanded */}
         <p
-          className={`transition-all duration-300 ${!isExpanded ? "line-clamp-10" : ""}`}
+          className={`transition-all duration-300 ${!isExpanded ? "line-clamp-8" : ""}`}
         >
           {paragraphs[0]}
         </p>

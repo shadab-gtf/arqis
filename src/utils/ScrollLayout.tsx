@@ -45,7 +45,7 @@ const ScrollLayout = ({
 
   return (
     <div className={`grid grid-cols-1 relative w-full overflow-hidden pt-[40px] md:grid-cols-2 md:pt-0 ${containerClassName}`}>
-      <div className={isPattern + ` col-span-1 relative z-10 fade-up my-auto mobile-background bg-[#FFF1DF] px-5 py-12 sm:px-8 sm:py-16 md:h-screen lg:px-16 lg:py-24 large-desktop`}>
+      <div className={isPattern + ` col-span-1 relative z-10 fade-up my-auto mobile-background bg-[#FFF1DF] px-5 py-12 sm:px-8 sm:py-16 md:h-screen lg:px-2 lg:py-24 large-desktop`}>
         <div className={`custom-container ${leftContentClassName}`}>
           {leftContent}
           {isShowDrag && <DragComponent draggableAlign={draggableAlign} centerDragVia={centerDragVia} scrollableRef={scrollableRef} />}

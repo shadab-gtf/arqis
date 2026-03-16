@@ -27,14 +27,8 @@ export default function HorizontalLayout({ children }: { children: React.ReactNo
     setPrev(() => prev);
 
     document.body.classList.add("active");
-    document.body.classList.add("hero-active"); // hide logo from hero section 
-    // document.body.classList.add("extra-active"); // change text colors on behalf of this 
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    document.body.classList.add("hero-active"); 
   }, []);
-
-
-
   return (
     <ScrollContext.Provider value={{ gotoFn, next, prev }}>
       <div className="">

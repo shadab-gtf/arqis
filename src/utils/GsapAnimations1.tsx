@@ -2,7 +2,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import ScrollSmoother from "gsap/dist/ScrollSmoother";
-import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
@@ -51,7 +50,6 @@ export default function initScrollSmoother(router: any) {
     SCROLL_SPEED: 1,
   };
 
-  // console.log()
   const microsite = router?.microsite;
 
   const applyBodyStateForSection = (index: number) => {
@@ -207,7 +205,7 @@ export default function initScrollSmoother(router: any) {
       ease: "power3.inOut",
       onStart: () => {
         document.documentElement.classList.add("is-sliding");
-        // updateTheme(next);
+        updateTheme(next);
       },
       onUpdate: function () {
         document.documentElement.style.setProperty(

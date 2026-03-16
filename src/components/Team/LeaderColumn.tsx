@@ -53,7 +53,7 @@ export default function LeaderColumn({ members, activeId, onSelect }: LeaderColu
 
                             {/* Info */}
                             <div className="flex flex-col pt-2 sm:pt-0">
-                                <h3 className="text-xl md:text-[24px] lg:text-[28px] text-[#113120] tt-light tracking-[1px]">
+                                <h3 className="text-xl md:text-[24px] lg:text-[28px] 2xl:text-[25px] text-[#113120] tt-light tracking-[1px]">
                                     {member.name}
                                 </h3>
                                 <p className="text-[#113120] text-sm md:text-sm lg:text-base tracking-[1px] mt-1 mb-6">

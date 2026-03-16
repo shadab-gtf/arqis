@@ -90,6 +90,15 @@ body {
   padding: 0;
 }
 
+.desc {
+  line-height: 1;
+  text-wrap: nowrap;
+  font-size: 15px;
+  letter-spacing: -0.29px;
+  font-weight: 300 !important;
+  color: #242424;
+}
+
 .font-inter {
   font-family: "Inter", sans-serif;
 }
@@ -193,11 +202,7 @@ body.active .icon {
     max-width: 96%;
   }
 
-  .desc {
-    line-height: 1;
-    font-size: 14px;
-    color: #242424;
-  }
+
 }
 
 .custom-container .prog {
@@ -412,10 +417,11 @@ input-placeholder {
   .footer a {
     padding: 18px 0;
   }
-  .media{
-    padding-top: 0 ;
+
+  .media {
+    padding-top: 0;
   }
- 
+
 }
 
 @media (max-width: 1580px) {

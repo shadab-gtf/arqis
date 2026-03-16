@@ -30,6 +30,11 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
                         <Link
                             href={`/blog/${item.slug}`}
                             className='flex items-center py-8 uppercase read-more tracking-[1px] gap-2'
+                            onClick={() => {
+                                if (typeof window !== "undefined") {
+                                    window.sessionStorage.setItem("lastSection", "4");
+                                }
+                            }}
                         >read more
                             <Image
                                 className='arrow_container'
