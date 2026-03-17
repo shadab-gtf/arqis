@@ -51,7 +51,7 @@ export default function page() {
           <ContactformContainer />
         </div>
 
-        <div className="basis-[100%] overflow-hidden  flex  items-center   item grow-0 shrink-0 h-full">
+        <div className="basis-[100%] overflow-hidden flex items-center item grow-0 shrink-0 h-full">
           <FooterContainer />
         </div>
       </div>

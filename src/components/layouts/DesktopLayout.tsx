@@ -39,7 +39,7 @@ export default function DesktopLayout() {
         <div className="basis-[100%] item grow-0 shrink-0 h-full">
           <ContactformContainer />
         </div>
-        <div className="basis-[100%] item grow-0 shrink-0 h-full flex items-center">
+        <div className="basis-[100%] item grow-0 shrink-0 h-full flex items-center bg-[#FFF1DF]">
           <FooterContainer />
         </div>
       </div>
