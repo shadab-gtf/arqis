@@ -145,7 +145,7 @@ export default function Form() {
           )}
         </div>
 
-        <div className="input-container inline-flex pt-[15px]">
+        <div className="input-container submit-btn inline-flex pt-[15px]">
           <button
             type="submit"
             className="uppercase text-white cursor-pointer" 

@@ -159,23 +159,23 @@ export default function ProjectContainer() {
                   {/* IMAGE */}
                   <div className="w-full h-full overflow-hidden ">
                     <Image
-                      className="project-card-image w-full  h-[421px] object-cover"
+                      className="project-card-image w-full  h-[340px] object-cover"
                       src={project.image}
                       width={1200}
-                      height={421}
+                      height={340}
                       alt={project.title}
                     />
                   </div>
 
                   {/* CONTENT */}
-                  <div className="flex flex-col justify-center gap-10 h-full">
+                  <div className="flex flex-col justify-center gap-6 h-full">
                     <div>
                       <CommonHeading
                         heading={project.title}
-                        customClass="project-card-title text-[24px] sm:text-[2rem] md:text-[3.5rem]! "
+                        customClass="project-card-title text-[24px] sm:text-[2rem] md:text-[3.5rem]! pb-4!"
                       />
 
-                      <div className="project-card-location mt-4 flex items-center gap-2">
+                      <div className="project-card-location flex items-center gap-2">
                         <MapPin size={20} />
                         <span className="font-normal text-base sm:text-lg lg:text-lg tracking-wide text-center uppercase">
                           {project.location}
@@ -209,10 +209,8 @@ export default function ProjectContainer() {
       <button
         key={project.id}
         onClick={() => goToSlide(index)}
-        // Added 'group' class to the button to trigger child hover states
         className="group relative overflow-hidden opacity-90 hover:opacity-100 transition duration-300"
       >
-        {/* Overlay: Centered Project Name */}
         <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <span className="text-white text-lg font-medium tracking-wider px-4 text-center uppercase">
             {project.title}
@@ -222,10 +220,10 @@ export default function ProjectContainer() {
         {/* Thumbnail Image */}
         <Image
           src={project.thumb}
-          width={450}
-          height={156}
+          width={430}
+          height={230}
           alt={project.title}
-          className="button-img w-full h-[156px] object-cover transition-transform duration-700 group-hover:scale-110"
+          className="button-img w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
         
         {/* Optional: Dark gradient overlay that is always there to improve text readability */}

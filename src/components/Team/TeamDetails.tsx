@@ -157,7 +157,7 @@ export default function TeamDetails({
 
       {/* Submembers */}
       {regularSubMembers.length > 0 && (
-        <div className="flex flex-col gap-4 w-full max-w-md mt-4">
+        <div className="flex flex-col gap-4 w-full mt-4">
           {regularSubMembers.map((sub) => (
             <div
               key={sub.id}
@@ -186,8 +186,8 @@ export default function TeamDetails({
 
       )}
       {featuredSubMember && (
-        <div className="bg-white/15 w-full max-w-md mt-4 border border-white/10 rounded-xl px-5 md:px-6 py-4 backdrop-blur-[4px] transition-transform hover:-translate-y-1 duration-300">
-          <h3 className=" text-lg md:text-xl max-w-3xs text-[#FFF1DF] tracking-wide tt-light">
+        <div className="bg-white/15 w-full mt-4 border border-white/10 rounded-xl px-5 md:px-6 py-4 backdrop-blur-[4px] transition-transform hover:-translate-y-1 duration-300">
+          <h3 className=" text-lg md:text-xl  text-[#FFF1DF] tracking-wide tt-light">
             Meet The Guiding Force Behind Our Success And Vision.
           </h3>
           <div className="mt-2 flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-5">
