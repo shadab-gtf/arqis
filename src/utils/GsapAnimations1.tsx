@@ -154,107 +154,291 @@ export default function initScrollSmoother(router: any) {
     });
   };
 
-  const goToSection = async (index, scrollDirection = null) => {
-    if (index < 0 || index >= sections.length || isAnimating) return;
-    isAnimating = true;
-    const previousIndex = currentIndex;
-    const delayLogoRevealUntilComplete = shouldDelayLogoReveal(
-      previousIndex,
-      index
-    );
+   // const goToSection = async (index, scrollDirection = null) => {
+  //   if (index < 0 || index >= sections.length || isAnimating) return;
+  //   isAnimating = true;
+  //   const previousIndex = currentIndex;
+  //   const delayLogoRevealUntilComplete = shouldDelayLogoReveal(
+  //     previousIndex,
+  //     index
+  //   );
 
-    const activeSection = sections[currentIndex];
-    const verticalScrollable = activeSection.querySelector(
-      ".scrollable-container"
+  //   const activeSection = sections[currentIndex];
+  //   const verticalScrollable = activeSection.querySelector(
+  //     ".scrollable-container"
+  //   );
+  //   if (verticalScrollable && scrollDirection) {
+  //     const atBoundary = isAtScrollBoundary(
+  //       verticalScrollable,
+  //       scrollDirection === "forward" ? 1 : -1
+  //     );
+  //     if (!atBoundary) {
+  //       scrollToBoundary(verticalScrollable, scrollDirection);
+  //       setTimeout(() => (isAnimating = false), CONFIG.COOLDOWN_MS);
+  //       return;
+  //     }
+  //   }
+
+  //   if (shouldHideLogoImmediately(previousIndex, index)) {
+  //     applyBodyStateForSection(index);
+  //   } else if (!delayLogoRevealUntilComplete) {
+  //     applyBodyStateForSection(index);
+  //   }
+
+  //   const next = sections[index];
+  //   const prev = sections[currentIndex];
+  //   const dir = index > currentIndex ? "forward" : "backward";
+  //   const sectionKeys = Object.keys(SLIDE_NAV);
+  //   const nextSectionKey = sectionKeys[index];
+  //   const nextRoute = SLIDE_NAV[nextSectionKey]?.route;
+
+  //   document.documentElement.classList.add(`sliding-${dir}`);
+  //   outTL.get(prev)?.play();
+
+  //   const scrollContainer = document.querySelector(".horizontal-section");
+  //   const maxScroll = (scrollContainer as HTMLElement).scrollWidth - (scrollContainer as HTMLElement).clientWidth;
+  //   const targetScroll = (index / (sections.length - 1)) * maxScroll;
+
+  //   await gsap.to(scrollContainer, {
+  //     scrollTo: { x: targetScroll },
+  //     duration: CONFIG.ANIM_DURATION,
+  //     ease: "power3.inOut",
+  //     onStart: () => {
+  //       document.documentElement.classList.add("is-sliding");
+  //       updateTheme(next);
+  //     },
+  //     onUpdate: function () {
+  //       document.documentElement.style.setProperty(
+  //         "--slide-progress",
+  //         this.progress()
+  //       );
+  //     },
+  //     onComplete: () => {
+  //       currentIndex = index;
+  //       sections.forEach((sec, i) =>
+  //         sec.classList.toggle("is-active", i === index)
+  //       );
+  //       inTL.get(next)?.play();
+
+  //       if (delayLogoRevealUntilComplete) {
+  //         applyBodyStateForSection(index);
+  //       }
+
+  //       // Fixed class toggles: Always apply based on current index for consistency
+  //       // const activeIndices = microsite ? [1] : [1, 4, 7];
+
+  //       const activeIndices = microsite ? [0] : [0, 1, 2, 3, 4, 5, 6, 7];
+  //       const shouldActive = activeIndices.includes(index);
+  //       document.body.classList.toggle("active", shouldActive);
+
+  //       if (microsite) {
+  //         document.body.classList.toggle("full-color", [4, 6, 8].includes(index));
+  //       }
+
+  //       // Make hover-Effect consistent with active indices (adjust if microsite needs different logic for index 7)
+  //       const shouldHover = activeIndices.includes(index);
+  //       document
+  //         .querySelector("header")
+  //         ?.classList.toggle("hover-Effect", shouldHover);
+  //       document
+  //         .querySelector(".span_1")
+  //         ?.classList.toggle("hover-Effect", shouldHover);
+  //       document
+  //         .querySelector(".span_2")
+  //         ?.classList.toggle("hover-Effect", shouldHover);
+  //       document
+  //         .querySelector(".span_3")
+  //         ?.classList.toggle("hover-Effect", shouldHover);
+  //       document
+  //         .querySelector(".nextcontent")
+  //         ?.classList.toggle("hover-Effect", shouldHover);
+
+  //       const navConfig = microsite
+  //         ? [
+  //           { prev: "Arqis Mall", next: "Overview", footer: "remove" },
+  //           { prev: "Overview", next: "Amenities", footer: "add" },
+  //           { prev: "Amenities", next: "Highlights", footer: "add" },
+  //           { prev: "Highlights", next: "Brand Partners", footer: "add" },
+  //           { prev: "Brand Partners", next: "Floor Plan", footer: "add" },
+  //           { prev: "Floor Plan", next: "Location", footer: "add" },
+  //           { prev: "Location", next: "Gallery", footer: "add" },
+  //           { prev: "Gallery", next: "Contact us", footer: "add" },
+  //           { prev: "Contact us", next: "quick links", footer: "add" },
+  //           { prev: "Quick Links", next: "The End", footer: "add" },
+  //         ]
+  //         : [
+  //           { prev: "Reshaping Real Estate", next: "Start Journey", footer: "remove", },
+  //           { prev: "Philosophy", next: "Projects", footer: "add" },
+  //           { prev: "Projects", next: "Media", footer: "add" },
+  //           { prev: "Media", next: "Blog", footer: "add" },
+  //           { prev: "Blog", next: "Career", footer: "add" },
+  //           { prev: "Careers", next: "Team", footer: "add" },
+  //           { prev: "Team", next: "Contact", footer: "add" },
+  //           { prev: "Contact", next: "Quick Links", footer: "add" },
+  //           { prev: "Quick Links", next: "The End", footer: "add" },
+  //         ];
+
+  //       if (navConfig[index]) {
+  //         document.querySelector(".prev_title").textContent =
+  //           navConfig[index].prev;
+  //         document.querySelector(".next_title").textContent =
+  //           navConfig[index].next;
+  //         document
+  //           .querySelector("footer")
+  //           ?.classList.toggle(
+  //             "change_style",
+  //             navConfig[index].footer === "add"
+  //           );
+  //       }
+
+  //       emit("slidechange", {
+  //         index,
+  //         direction: dir,
+  //         footerTitle: next?.dataset.footerTitle || "",
+  //         footerCta: next?.dataset.footerCta || "",
+  //       });
+
+  //       // if (router && nextRoute) router.push(nextRoute);
+
+  //       setTimeout(() => {
+  //         isAnimating = false;
+  //         document.documentElement.classList.remove(
+  //           "is-sliding",
+  //           `sliding-${dir}`
+  //         );
+  //       }, CONFIG.COOLDOWN_MS);
+  //     },
+  //   });
+
+  //   // gsap.fromTo(next, { scale: 1.05 }, { scale: 1, duration: CONFIG.ANIM_DURATION, ease: "power3.out" });
+  // };
+
+
+   const goToSection = async (index, scrollDirection = null) => {
+  if (index < 0 || index >= sections.length || isAnimating) return;
+  
+  // Don't navigate to same section
+  if (index === currentIndex) return;
+  
+  isAnimating = true;
+  const previousIndex = currentIndex;
+  const direction = index > previousIndex ? "forward" : "backward";
+  
+  // Reset accumulator
+  accum = 0;
+  
+  const delayLogoRevealUntilComplete = shouldDelayLogoReveal(
+    previousIndex,
+    index
+  );
+
+  // IMPORTANT FIX: Only check vertical scrollable if we're NOT changing sections
+  // This was causing the issue when navigating from last to previous sections
+  const activeSection = sections[previousIndex];
+  const verticalScrollable = activeSection?.querySelector(
+    ".scrollable-container"
+  );
+  
+  // Only handle vertical scroll if we're trying to scroll within the SAME section
+  if (verticalScrollable && scrollDirection && previousIndex === currentIndex) {
+    const atBoundary = isAtScrollBoundary(
+      verticalScrollable,
+      scrollDirection === "forward" ? 1 : -1
     );
-    if (verticalScrollable && scrollDirection) {
-      const atBoundary = isAtScrollBoundary(
-        verticalScrollable,
-        scrollDirection === "forward" ? 1 : -1
+    if (!atBoundary) {
+      scrollToBoundary(verticalScrollable, scrollDirection);
+      setTimeout(() => (isAnimating = false), CONFIG.COOLDOWN_MS);
+      return;
+    }
+  }
+
+  if (shouldHideLogoImmediately(previousIndex, index)) {
+    applyBodyStateForSection(index);
+  } else if (!delayLogoRevealUntilComplete) {
+    applyBodyStateForSection(index);
+  }
+
+  const next = sections[index];
+  const prev = sections[previousIndex]; // FIX: Use previousIndex instead of currentIndex
+  const dir = index > previousIndex ? "forward" : "backward"; // FIX: Use previousIndex for direction
+  const sectionKeys = Object.keys(SLIDE_NAV);
+  const nextSectionKey = sectionKeys[index];
+  const nextRoute = SLIDE_NAV[nextSectionKey]?.route;
+
+  document.documentElement.classList.add(`sliding-${dir}`);
+  
+  // Play out animation for current section
+  if (outTL.get(prev)) {
+    outTL.get(prev).play();
+  }
+
+  const scrollContainer = document.querySelector(".horizontal-section");
+  if (!scrollContainer) {
+    isAnimating = false;
+    return;
+  }
+  
+  const maxScroll = (scrollContainer as HTMLElement).scrollWidth - (scrollContainer as HTMLElement).clientWidth;
+  const targetScroll = (index / (sections.length - 1)) * maxScroll;
+
+  await gsap.to(scrollContainer, {
+    scrollTo: { x: targetScroll },
+    duration: CONFIG.ANIM_DURATION,
+    ease: "power3.inOut",
+    onStart: () => {
+      document.documentElement.classList.add("is-sliding");
+      if (next) updateTheme(next);
+    },
+    onUpdate: function () {
+      document.documentElement.style.setProperty(
+        "--slide-progress",
+        this.progress()
       );
-      if (!atBoundary) {
-        scrollToBoundary(verticalScrollable, scrollDirection);
-        setTimeout(() => (isAnimating = false), CONFIG.COOLDOWN_MS);
-        return;
-      }
-    }
-
-    if (shouldHideLogoImmediately(previousIndex, index)) {
-      applyBodyStateForSection(index);
-    } else if (!delayLogoRevealUntilComplete) {
-      applyBodyStateForSection(index);
-    }
-
-    const next = sections[index];
-    const prev = sections[currentIndex];
-    const dir = index > currentIndex ? "forward" : "backward";
-    const sectionKeys = Object.keys(SLIDE_NAV);
-    const nextSectionKey = sectionKeys[index];
-    const nextRoute = SLIDE_NAV[nextSectionKey]?.route;
-
-    document.documentElement.classList.add(`sliding-${dir}`);
-    outTL.get(prev)?.play();
-
-    const scrollContainer = document.querySelector(".horizontal-section");
-    const maxScroll = (scrollContainer as HTMLElement).scrollWidth - (scrollContainer as HTMLElement).clientWidth;
-    const targetScroll = (index / (sections.length - 1)) * maxScroll;
-
-    await gsap.to(scrollContainer, {
-      scrollTo: { x: targetScroll },
-      duration: CONFIG.ANIM_DURATION,
-      ease: "power3.inOut",
-      onStart: () => {
-        document.documentElement.classList.add("is-sliding");
-        updateTheme(next);
-      },
-      onUpdate: function () {
-        document.documentElement.style.setProperty(
-          "--slide-progress",
-          this.progress()
-        );
-      },
-      onComplete: () => {
-        currentIndex = index;
-        sections.forEach((sec, i) =>
-          sec.classList.toggle("is-active", i === index)
-        );
+    },
+    onComplete: () => {
+      currentIndex = index;
+      sections.forEach((sec, i) =>
+        sec.classList.toggle("is-active", i === index)
+      );
+      
+      // Play in animation for new section
+      if (inTL.get(next)) {
         inTL.get(next)?.play();
+      }
 
-        if (delayLogoRevealUntilComplete) {
-          applyBodyStateForSection(index);
-        }
+      if (delayLogoRevealUntilComplete) {
+        applyBodyStateForSection(index);
+      }
 
-        // Fixed class toggles: Always apply based on current index for consistency
-        // const activeIndices = microsite ? [1] : [1, 4, 7];
+      // Fixed class toggles: Always apply based on current index for consistency
+      const activeIndices = microsite ? [0] : [0, 1, 2, 3, 4, 5, 6, 7];
+      const shouldActive = activeIndices.includes(index);
+      document.body.classList.toggle("active", shouldActive);
 
-        const activeIndices = microsite ? [0] : [0, 1, 2, 3, 4, 5, 6, 7];
-        const shouldActive = activeIndices.includes(index);
-        document.body.classList.toggle("active", shouldActive);
+      if (microsite) {
+        document.body.classList.toggle("full-color", [4, 6, 8].includes(index));
+      }
 
-        if (microsite) {
-          document.body.classList.toggle("full-color", [4, 6, 8].includes(index));
-        }
+      // Make hover-Effect consistent with active indices
+      const shouldHover = activeIndices.includes(index);
+      document
+        .querySelector("header")
+        ?.classList.toggle("hover-Effect", shouldHover);
+      document
+        .querySelector(".span_1")
+        ?.classList.toggle("hover-Effect", shouldHover);
+      document
+        .querySelector(".span_2")
+        ?.classList.toggle("hover-Effect", shouldHover);
+      document
+        .querySelector(".span_3")
+        ?.classList.toggle("hover-Effect", shouldHover);
+      document
+        .querySelector(".nextcontent")
+        ?.classList.toggle("hover-Effect", shouldHover);
 
-        // Make hover-Effect consistent with active indices (adjust if microsite needs different logic for index 7)
-        const shouldHover = activeIndices.includes(index);
-        document
-          .querySelector("header")
-          ?.classList.toggle("hover-Effect", shouldHover);
-        document
-          .querySelector(".span_1")
-          ?.classList.toggle("hover-Effect", shouldHover);
-        document
-          .querySelector(".span_2")
-          ?.classList.toggle("hover-Effect", shouldHover);
-        document
-          .querySelector(".span_3")
-          ?.classList.toggle("hover-Effect", shouldHover);
-        document
-          .querySelector(".nextcontent")
-          ?.classList.toggle("hover-Effect", shouldHover);
-
-        const navConfig = microsite
-          ? [
+      const navConfig = microsite
+        ? [
             { prev: "Arqis Mall", next: "Overview", footer: "remove" },
             { prev: "Overview", next: "Amenities", footer: "add" },
             { prev: "Amenities", next: "Highlights", footer: "add" },
@@ -266,8 +450,8 @@ export default function initScrollSmoother(router: any) {
             { prev: "Contact us", next: "quick links", footer: "add" },
             { prev: "Quick Links", next: "The End", footer: "add" },
           ]
-          : [
-            { prev: "Reshaping Real Estate", next: "Start Journey", footer: "remove", },
+        : [
+            { prev: "Reshaping Real Estate", next: "Start Journey", footer: "remove" },
             { prev: "Philosophy", next: "Projects", footer: "add" },
             { prev: "Projects", next: "Media", footer: "add" },
             { prev: "Media", next: "Blog", footer: "add" },
@@ -278,40 +462,38 @@ export default function initScrollSmoother(router: any) {
             { prev: "Quick Links", next: "The End", footer: "add" },
           ];
 
-        if (navConfig[index]) {
-          document.querySelector(".prev_title").textContent =
-            navConfig[index].prev;
-          document.querySelector(".next_title").textContent =
-            navConfig[index].next;
-          document
-            .querySelector("footer")
-            ?.classList.toggle(
-              "change_style",
-              navConfig[index].footer === "add"
-            );
-        }
-
-        emit("slidechange", {
-          index,
-          direction: dir,
-          footerTitle: next?.dataset.footerTitle || "",
-          footerCta: next?.dataset.footerCta || "",
-        });
-
-        // if (router && nextRoute) router.push(nextRoute);
-
-        setTimeout(() => {
-          isAnimating = false;
-          document.documentElement.classList.remove(
-            "is-sliding",
-            `sliding-${dir}`
+      if (navConfig[index]) {
+        const prevTitle = document.querySelector(".prev_title");
+        const nextTitle = document.querySelector(".next_title");
+        if (prevTitle) prevTitle.textContent = navConfig[index].prev;
+        if (nextTitle) nextTitle.textContent = navConfig[index].next;
+        
+        const footer = document.querySelector("footer");
+        if (footer) {
+          footer.classList.toggle(
+            "change_style",
+            navConfig[index].footer === "add"
           );
-        }, CONFIG.COOLDOWN_MS);
-      },
-    });
+        }
+      }
 
-    // gsap.fromTo(next, { scale: 1.05 }, { scale: 1, duration: CONFIG.ANIM_DURATION, ease: "power3.out" });
-  };
+      emit("slidechange", {
+        index,
+        direction: dir,
+        footerTitle: next?.dataset.footerTitle || "",
+        footerCta: next?.dataset.footerCta || "",
+      });
+
+      setTimeout(() => {
+        isAnimating = false;
+        document.documentElement.classList.remove(
+          "is-sliding",
+          `sliding-${dir}`
+        );
+      }, CONFIG.COOLDOWN_MS);
+    },
+  });
+};
 
   const isAtScrollBoundary = (el, deltaY, isHorizontal = false) => {
     if (!el) return true;
