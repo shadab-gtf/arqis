@@ -143,7 +143,7 @@ export default function Form() {
 
         <div className="input-container mb-[15px]">
           <select
-            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""}`}
+            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""} appearance-none`}
             name="duration"
             value={formData.duration}
             onChange={handleChange}

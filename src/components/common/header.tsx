@@ -14,10 +14,10 @@ const Header = () => {
   if (!isClient) return null;
 
   return ReactDOM.createPortal(
-    <header className="w-full  large-desktop py-2 mobile-device lg:py-[30px] z-[3] fixed left-0 top-0 ">
+    <header className="w-full  large-desktop py-2 mobile-device lg:py-[30px] z-[9999] fixed left-0 top-0 ">
       <div className="container  xl:ml-16! 2xl:ml-0!">
         <div className="flex cursor-pointer mobile-header justify-between items-center">
-          <Link className="logo invisible lg:visible" onClick={() => gotoFn(0)} href={"#"}>
+          <Link className="logo hidden lg:block relative h-[75px] w-[229px]" onClick={() => gotoFn(0)} href={"#"}>
             <Image
               src="/assets/arqis-black.svg"
               className="logo-black hide-logo-from-hero h-[75px] w-full"

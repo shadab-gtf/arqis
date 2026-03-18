@@ -15,10 +15,10 @@ export default function contact() {
               height={30}
               width={30}
             />
-            mkt@ARQIS GROUP.in
+            info@arqisgroup.com
           </a>
         </li>
-        <li className="mb-[30px]">
+        {/* <li className="mb-[30px]">
           <a className="uppercase inline-flex gap-[20px]" href="+91999999999">
             <Image
               src={`/assets/icons/telephone.svg`}
@@ -28,7 +28,7 @@ export default function contact() {
             />
             +91999999999
           </a>
-        </li>
+        </li> */}
         <li className="mb-[30px]">
           <a className="uppercase inline-flex gap-[20px]" href="#">
             <Image
@@ -36,8 +36,8 @@ export default function contact() {
               alt="telephone"
               height={30}
               width={30}
-            />
-            Sector 129 Noida
+            />  
+            Gulshan Sector 129 Noida
           </a>
         </li>
       </ul>
