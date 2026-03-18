@@ -91,7 +91,7 @@ export default function FooterContainer() {
       </div>
       <ul className="flex justify-center lg:py-[0] py-[30px] gap-10">
         <li>
-          <Link href={"#"}>
+          <Link href={"https://www.instagram.com/arqisgroup/"}>
             <Image
               src={`/assets/icons/instagram.png`}
               alt=""
@@ -101,7 +101,7 @@ export default function FooterContainer() {
           </Link>
         </li>
         <li>
-          <Link href={"#"}>
+          <Link href={"https://www.facebook.com/arqisgroup/"}>
             <Image
               src={`/assets/icons/facebook.png`}
               alt=""
@@ -111,7 +111,7 @@ export default function FooterContainer() {
           </Link>
         </li>
         <li>
-          <Link href={"#"}>
+          <Link href={"https://www.youtube.com/@ArqisGroup"}>
             <Image
               src={`/assets/icons/youtube.png`}
               alt=""
@@ -121,7 +121,7 @@ export default function FooterContainer() {
           </Link>
         </li>
         <li>
-          <Link href={"#"}>
+          <Link href={"https://www.linkedin.com/company/arqis-group/"}>
             <Image
               src={`/assets/icons/linkedin.png`}
               alt=""

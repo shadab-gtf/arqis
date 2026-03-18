@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function MapSection() {
-  const [showLocation, setShowLocation] = useState(false);
+  const [showLocation, setShowLocation] = useState(true);
 
   return (
     <button
