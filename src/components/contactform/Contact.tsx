@@ -37,7 +37,7 @@ export default function contact() {
               height={30}
               width={30}
             />
-            Noida sector 25
+            Sector 129 Noida
           </a>
         </li>
       </ul>
