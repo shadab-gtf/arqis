@@ -647,8 +647,6 @@ input-placeholder {
   }
 
   .submit-btn button {
-    /* font-size: 14px; */
-    color: #000;
     font-weight: 400;
   }
 
@@ -713,10 +711,21 @@ input-placeholder {
     background: #000;
     opacity: 1;
   }
-  .desc{
-    text-wrap:wrap;
+
+  .desc {
+    text-wrap: wrap;
+  }
+
+  .common-heading,
+  .parallax h2 {
+    font-size: 24px;
+  }
+
+  body.hero-active .mobile-header-bg {
+    display: none;
   }
 }
+
 .mobile-header-bg {
   background-color: #fff;
 }

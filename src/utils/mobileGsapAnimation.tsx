@@ -21,6 +21,15 @@ export default function initScrollSmoother(router: any) {
   const sections = gsap.utils.toArray<HTMLElement>(".horizontal-section .item");
   if (!sections.length) return { cleanup: () => {} };
 
+  const getInitialIndex = () => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash === "#blogs") return 6;
+    }
+    return 0;
+  };
+
+  const initialIndex = getInitialIndex();
   let currentIndex = 0;
   let isAnimating = false;
 
@@ -200,6 +209,16 @@ export default function initScrollSmoother(router: any) {
       },
     });
   };
+
+  if (initialIndex > 0) {
+    setTimeout(() => {
+      const originalDuration = CONFIG.ANIM_DURATION;
+      CONFIG.ANIM_DURATION = 0.01;
+      goToSection(initialIndex, "forward").then(() => {
+        CONFIG.ANIM_DURATION = originalDuration;
+      });
+    }, 100);
+  }
 
   const cleanup = () => {
     gsap.killTweensOf(sections);

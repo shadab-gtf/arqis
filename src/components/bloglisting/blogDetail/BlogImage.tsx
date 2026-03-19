@@ -7,7 +7,7 @@ export default function BlogImage({ image, data }) {
   return (
     <div className='text-center'>
       <button
-        onClick={() => window.location.replace("/")}
+        onClick={() => window.location.replace("/#blogs")}
         className="flex items-center justify-end cursor-pointer gap-2 tracking-[1px] uppercase pb-10"
       >
         <Image

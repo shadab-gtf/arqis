@@ -200,38 +200,37 @@ export default function ProjectContainer() {
         </div>
 
         {/* THUMBNAILS (DESKTOP) */}
-       {/* THUMBNAILS (DESKTOP) */}
-<div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-  {visibleButtons.map((index) => {
-    const project = projects[index];
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {visibleButtons.map((index) => {
+            const project = projects[index];
 
-    return (
-      <button
-        key={project.id}
-        onClick={() => goToSlide(index)}
-        className="group relative overflow-hidden opacity-90 hover:opacity-100 transition duration-300"
-      >
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <span className="text-white text-lg font-medium tracking-wider px-4 text-center uppercase">
-            {project.title}
-          </span>
+            return (
+              <button
+                key={project.id}
+                onClick={() => goToSlide(index)}
+                className="group relative overflow-hidden opacity-90 hover:opacity-100 transition duration-300"
+              >
+                <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <span className="text-white text-lg font-medium tracking-wider px-4 text-center uppercase">
+                    {project.title}
+                  </span>
+                </div>
+
+                {/* Thumbnail Image */}
+                <Image
+                  src={project.thumb}
+                  width={430}
+                  height={230}
+                  alt={project.title}
+                  className="button-img w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Optional: Dark gradient overlay that is always there to improve text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            );
+          })}
         </div>
-
-        {/* Thumbnail Image */}
-        <Image
-          src={project.thumb}
-          width={430}
-          height={230}
-          alt={project.title}
-          className="button-img w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        
-        {/* Optional: Dark gradient overlay that is always there to improve text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      </button>
-    );
-  })}
-</div>
 
         {/* MOBILE SLIDER */}
         <div className="block md:hidden pb-[40px] w-full mt-4 mobile-projects-swiper">
@@ -252,10 +251,15 @@ export default function ProjectContainer() {
                     height={500}
                     alt={project.title}
                   />
-                  <div className="flex flex-col justify-between py-2 gap-[40px]">
-                    <h3 className="uppercase text-[16px] tracking-[2px] text-black font-medium">
-                      {project.title}
-                    </h3>
+                  <div className="flex flex-col justify-between py-2 gap-8">
+                    <div>
+                      <h3 className="uppercase text-[16px] tracking-[2px] text-black font-medium mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-black/70 font-light text-[14px] leading-relaxed ">
+                        {project.desc}
+                      </p>
+                    </div>
                     <Redirect_Link
                       text="Explore Project"
                       customClass="project-card-cta !text-black text-[14px] uppercase tracking-widest"
