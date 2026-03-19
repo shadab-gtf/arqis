@@ -245,11 +245,13 @@ body.active .next_text h2 {
   color: #fff;
 }
 
+
 body.active .next_text img {
   filter: invert(1);
 }
 
 body.hero-active .logo-black,
+body.hero-active .hero-act,
 body.hero-active .logo-white {
   display: none;
 }
@@ -711,4 +713,14 @@ input-placeholder {
     background: #000;
     opacity: 1;
   }
+  .desc{
+    text-wrap:wrap;
+  }
+}
+.mobile-header-bg {
+  background-color: #fff;
+}
+
+body.hero-active .mobile-header-bg {
+  background-color: #f7efe1;
 }
