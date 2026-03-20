@@ -10,7 +10,7 @@ export const blogList: Blog[] = [
   {
     slug: "1",
     heading: "Why is 2026 the year to invest in Commercial Real Estate?",
-    date: "31 Jan 2025",
+    date: "10 March 2026",
     image: "/assets/blog/img1.webp",
     content: [
       "2026 is shaping up to be a pivotal year for commercial real estate. With businesses embracing new trends, focusing on sustainability, and demanding flexibility in their spaces, commercial properties are becoming an increasingly valuable long-term asset. At ARQIS Group, we recognize that making the right investment in 2026 can set the stage for lasting success.",
@@ -26,7 +26,7 @@ export const blogList: Blog[] = [
     slug: "2",
     heading:
       "The Future of Commercial Spaces: How Timeless Design Drives Long-Term Success",
-    date: "31 Jan 2025",
+    date: "1 March 2026",
     image: "/assets/blog/img2.webp",
     content: [
       "As the world of commercial real estate continues to evolve, businesses are increasingly realizing that the value of a building goes beyond its current aesthetic appeal. It’s about how well it serves the needs of businesses over time. In a world constantly driven by trends and an ever-evolving industry, the true value of a commercial property lies in its timeless design. At ARQIS Group, this is exactly what we aim to achieve, designing spaces that stand the test of time.",
@@ -44,7 +44,7 @@ export const blogList: Blog[] = [
     slug: "3",
     heading:
       "Commercial Real Estate Trends in 2026: What Businesses Need to Know",
-    date: "25 Sep 2025",
+    date: "20 Feb 2026",
     image: "/assets/blog/img1-lg.webp",
     content: [
       "As we step into 2026, the world of commercial real estate is changing fast. Today, it is not just about providing space to do business; it is about providing space that is capable of adapting to the changing nature of doing business. At the same time, it is about providing sustainable and innovative space. At ARQIS Group, we are at the forefront of these changes, providing space that adapts to the changing needs of businesses and the world of commercial real estate.",
