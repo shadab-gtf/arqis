@@ -1,232 +1,336 @@
-import React, { useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import TeamCard from '@/components/Team/TeamCard';
-import CommonHeading from '@/utils/CommonHeading';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import 'swiper/css/pagination';
-import { EffectCards, Pagination } from 'swiper/modules';
-import Image from 'next/image';
+// import React, { useRef, useEffect } from 'react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import TeamCard from '@/components/Team/TeamCard';
+// import CommonHeading from '@/utils/CommonHeading';
+// import 'swiper/css';
+// import 'swiper/css/effect-cards';
+// import 'swiper/css/pagination';
+// import { EffectCards, Pagination } from 'swiper/modules';
+// import Image from 'next/image';
 
-// Custom CSS for the progress bar and icons
-const styles = `
-  .custom-progress {
-    width: 100%;
-    height: 1px !important;
-    background-color: #000;
-    border-radius: 9999px;
-    overflow: hidden;
-    flex: 1;
-    position: relative;
-    touch-action: none; /* Prevent default touch behaviors like scrolling */
-    cursor: url('/assets/icons/drag.svg') 15 15, auto; /* Custom cursor for desktop */
-  }
+// // Custom CSS for the progress bar and icons
+// const styles = `
+//   .custom-progress {
+//     width: 100%;
+//     height: 1px !important;
+//     background-color: #000;
+//     border-radius: 9999px;
+//     overflow: hidden;
+//     flex: 1;
+//     position: relative;
+//     touch-action: none; /* Prevent default touch behaviors like scrolling */
+//     cursor: url('/assets/icons/drag.svg') 15 15, auto; /* Custom cursor for desktop */
+//   }
 
-  .swiper-pagination-progressbar.swiper-pagination-horizontal {
-    overflow: inherit;
-  }
+//   .swiper-pagination-progressbar.swiper-pagination-horizontal {
+//     overflow: inherit;
+//   }
 
-  .swiper-pagination-progressbar-fill {
-    background-color: #22c55e !important; /* Tailwind's bg-green-500 */
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+//   .swiper-pagination-progressbar-fill {
+//     background-color: #22c55e !important; /* Tailwind's bg-green-500 */
+//     height: 100%;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//   }
 
-  /* Style for the default drag icon on the progress bar */
-  .drag-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    pointer-events: none; /* Prevent interference with interactions */
-  }
+//   /* Style for the default drag icon on the progress bar */
+//   .drag-icon {
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     z-index: 10;
+//     pointer-events: none; /* Prevent interference with interactions */
+//   }
 
-  /* Style for the custom cursor during dragging */
-  .custom-cursor {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1000;
-    display: none; /* Hidden by default */
-  }
-`;
+//   /* Style for the custom cursor during dragging */
+//   .custom-cursor {
+//     position: fixed;
+//     pointer-events: none;
+//     z-index: 1000;
+//     display: none; /* Hidden by default */
+//   }
+// `;
 
-export default function App() {
-  const swiperRef = useRef<any>(null); // Reference to Swiper instance
-  const progressBarRef = useRef<HTMLDivElement>(null); // Reference to progress bar element
-  const cursorRef = useRef<HTMLImageElement>(null); // Reference to custom cursor image
-  const dragIconRef = useRef<HTMLImageElement>(null); // Reference to default drag icon
+// export default function App() {
+//   const swiperRef = useRef<any>(null); // Reference to Swiper instance
+//   const progressBarRef = useRef<HTMLDivElement>(null); // Reference to progress bar element
+//   const cursorRef = useRef<HTMLImageElement>(null); // Reference to custom cursor image
+//   const dragIconRef = useRef<HTMLImageElement>(null); // Reference to default drag icon
 
-  useEffect(() => {
-    const progressBar = progressBarRef.current;
-    const cursor = cursorRef.current;
-    const dragIcon = dragIconRef.current;
-    if (!progressBar || !swiperRef.current || !cursor || !dragIcon) return;
+//   useEffect(() => {
+//     const progressBar = progressBarRef.current;
+//     const cursor = cursorRef.current;
+//     const dragIcon = dragIconRef.current;
+//     if (!progressBar || !swiperRef.current || !cursor || !dragIcon) return;
 
-    let isDragging = false;
+//     let isDragging = false;
 
-    // Update drag icon position based on progress
-    const updateDragIconPosition = () => {
-      const totalSlides = swiperRef.current.slides.length;
-      const progress = swiperRef.current.progress; // Swiper's progress (0 to 1)
-      const progressBarWidth = progressBar.getBoundingClientRect().width;
-      const iconWidth = 30; // Width of drag.svg
-      const leftPosition = progress * (progressBarWidth - iconWidth); // Adjust for icon width
-      dragIcon.style.left = `${leftPosition}px`;
-    };
+//     // Update drag icon position based on progress
+//     const updateDragIconPosition = () => {
+//       const totalSlides = swiperRef.current.slides.length;
+//       const progress = swiperRef.current.progress; // Swiper's progress (0 to 1)
+//       const progressBarWidth = progressBar.getBoundingClientRect().width;
+//       const iconWidth = 30; // Width of drag.svg
+//       const leftPosition = progress * (progressBarWidth - iconWidth); // Adjust for icon width
+//       dragIcon.style.left = `${leftPosition}px`;
+//     };
 
-    // Handle interaction (mouse or touch)
-    const handleInteraction = (e) => {
-      e.preventDefault(); // Prevent default behavior (e.g., scrolling)
-      const rect = progressBar.getBoundingClientRect();
-      let clientX, clientY;
+//     // Handle interaction (mouse or touch)
+//     const handleInteraction = (e) => {
+//       e.preventDefault(); // Prevent default behavior (e.g., scrolling)
+//       const rect = progressBar.getBoundingClientRect();
+//       let clientX, clientY;
 
-      // Handle both mouse and touch events
-      if (e.type === 'touchstart' || e.type === 'touchmove') {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      } else {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      }
+//       // Handle both mouse and touch events
+//       if (e.type === 'touchstart' || e.type === 'touchmove') {
+//         clientX = e.touches[0].clientX;
+//         clientY = e.touches[0].clientY;
+//       } else {
+//         clientX = e.clientX;
+//         clientY = e.clientY;
+//       }
 
-      // Calculate the click/touch position as a percentage of the progress bar width
-      const offsetX = clientX - rect.left;
-      const percentage = Math.max(0, Math.min(1, offsetX / rect.width));
+//       // Calculate the click/touch position as a percentage of the progress bar width
+//       const offsetX = clientX - rect.left;
+//       const percentage = Math.max(0, Math.min(1, offsetX / rect.width));
 
-      // Calculate the target slide based on the percentage
-      const totalSlides = swiperRef.current.slides.length;
-      const targetSlide = Math.round(percentage * (totalSlides - 1));
+//       // Calculate the target slide based on the percentage
+//       const totalSlides = swiperRef.current.slides.length;
+//       const targetSlide = Math.round(percentage * (totalSlides - 1));
 
-      // Navigate to the target slide
-      swiperRef.current.slideTo(targetSlide);
+//       // Navigate to the target slide
+//       swiperRef.current.slideTo(targetSlide);
 
-      // Update custom cursor position (for mobile)
-      if (e.type === 'touchstart' || e.type === 'touchmove') {
-        cursor.style.left = `${clientX - 15}px`; // Center 30x30 image
-        cursor.style.top = `${clientY - 15}px`;
-        cursor.style.display = 'block'; // Show cursor during drag
-      }
-    };
+//       // Update custom cursor position (for mobile)
+//       if (e.type === 'touchstart' || e.type === 'touchmove') {
+//         cursor.style.left = `${clientX - 15}px`; // Center 30x30 image
+//         cursor.style.top = `${clientY - 15}px`;
+//         cursor.style.display = 'block'; // Show cursor during drag
+//       }
+//     };
 
-    // Mouse events
-    const handleMouseDown = (e) => {
-      isDragging = true;
-      handleInteraction(e);
-      progressBar.addEventListener('mousemove', handleInteraction);
-    };
+//     // Mouse events
+//     const handleMouseDown = (e) => {
+//       isDragging = true;
+//       handleInteraction(e);
+//       progressBar.addEventListener('mousemove', handleInteraction);
+//     };
 
-    const handleMouseUp = () => {
-      isDragging = false;
-      cursor.style.display = 'none'; // Hide cursor when not dragging
-      progressBar.removeEventListener('mousemove', handleInteraction);
-    };
+//     const handleMouseUp = () => {
+//       isDragging = false;
+//       cursor.style.display = 'none'; // Hide cursor when not dragging
+//       progressBar.removeEventListener('mousemove', handleInteraction);
+//     };
 
-    // Touch events
-    const handleTouchStart = (e) => {
-      isDragging = true;
-      handleInteraction(e);
-    };
+//     // Touch events
+//     const handleTouchStart = (e) => {
+//       isDragging = true;
+//       handleInteraction(e);
+//     };
 
-    const handleTouchMove = (e) => {
-      if (isDragging) {
-        handleInteraction(e);
-      }
-    };
+//     const handleTouchMove = (e) => {
+//       if (isDragging) {
+//         handleInteraction(e);
+//       }
+//     };
 
-    const handleTouchEnd = () => {
-      isDragging = false;
-      cursor.style.display = 'none'; // Hide cursor when not dragging
-    };
+//     const handleTouchEnd = () => {
+//       isDragging = false;
+//       cursor.style.display = 'none'; // Hide cursor when not dragging
+//     };
 
-    // Update drag icon position on slide change
-    swiperRef.current.on('progress', updateDragIconPosition);
-    swiperRef.current.on('slideChange', updateDragIconPosition);
+//     // Update drag icon position on slide change
+//     swiperRef.current.on('progress', updateDragIconPosition);
+//     swiperRef.current.on('slideChange', updateDragIconPosition);
 
-    // Add event listeners
-    progressBar.addEventListener('click', handleInteraction);
-    progressBar.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
-    progressBar.addEventListener('touchstart', handleTouchStart);
-    progressBar.addEventListener('touchmove', handleTouchMove);
-    document.addEventListener('touchend', handleTouchEnd);
+//     // Add event listeners
+//     progressBar.addEventListener('click', handleInteraction);
+//     progressBar.addEventListener('mousedown', handleMouseDown);
+//     document.addEventListener('mouseup', handleMouseUp);
+//     progressBar.addEventListener('touchstart', handleTouchStart);
+//     progressBar.addEventListener('touchmove', handleTouchMove);
+//     document.addEventListener('touchend', handleTouchEnd);
 
-    // Initial position of drag icon
-    updateDragIconPosition();
+//     // Initial position of drag icon
+//     updateDragIconPosition();
 
-    // Cleanup event listeners on component unmount
-    return () => {
-      progressBar.removeEventListener('click', handleInteraction);
-      progressBar.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      progressBar.removeEventListener('touchstart', handleTouchStart);
-      progressBar.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-      if (swiperRef.current) {
-        swiperRef.current.off('progress', updateDragIconPosition);
-        swiperRef.current.off('slideChange', updateDragIconPosition);
-      }
-    };
-  }, []);
+//     // Cleanup event listeners on component unmount
+//     return () => {
+//       progressBar.removeEventListener('click', handleInteraction);
+//       progressBar.removeEventListener('mousedown', handleMouseDown);
+//       document.removeEventListener('mouseup', handleMouseUp);
+//       progressBar.removeEventListener('touchstart', handleTouchStart);
+//       progressBar.removeEventListener('touchmove', handleTouchMove);
+//       document.removeEventListener('touchend', handleTouchEnd);
+//       if (swiperRef.current) {
+//         swiperRef.current.off('progress', updateDragIconPosition);
+//         swiperRef.current.off('slideChange', updateDragIconPosition);
+//       }
+//     };
+//   }, []);
+
+//   return (
+//     <div className="px-[30px] py-20">
+//       {/* Inject custom styles */}
+//       <style>{styles}</style>
+//       <div className="container relative mobile-heading-2 ">
+//         <CommonHeading heading="Driven By Passion, United by Purpose" />
+//         {/* <div className="flex items-center gap-4 mt-4 mb-20">
+          
+//           <div className="relative flex-1">
+//             <div className="custom-progress mt-0" ref={progressBarRef}>
+//               <Image
+//                 ref={dragIconRef}
+//                 src="/assets/icons/drag.svg"
+//                 height={30}
+//                 width={30}
+//                 alt="drag"
+//                 className="drag-icon"
+//               />
+//             </div>
+//           </div>
+//           <span className="uppercase tracking-[1.4] text-[14px] block">
+//             Drag For More View
+//           </span>
+//           <Image
+//             ref={cursorRef}
+//             src="/assets/icons/drag.svg"
+//             height={30}
+//             width={30}
+//             alt="drag-cursor"
+//             className="custom-cursor"
+//           />
+//         </div> */}
+
+//         <Swiper
+//           effect="cards"
+//           grabCursor={true}
+//           modules={[EffectCards, Pagination]}
+//           className="mySwiper w-[80%] lg:mt-0 mt-[20px]"
+//           pagination={{
+//             type: 'progressbar',
+//             el: '.custom-progress',
+//           }}
+//           onSwiper={(swiper) => {
+//             swiperRef.current = swiper;
+//           }}
+//         >
+//           <SwiperSlide className="!h-[450px] md:!h-[600px]">
+//             <TeamCard bg="bg-[#ecebda]" image="/assets/teams/teams_1.png" />
+//           </SwiperSlide>
+//           <SwiperSlide className="!h-[450px] md:!h-[600px]">
+//             <TeamCard bg="bg-[#90c9a3]" image="/assets/teams/teams_2.png" />
+//           </SwiperSlide>
+//           <SwiperSlide className="!h-[450px] md:!h-[600px]">
+//             <TeamCard bg="bg-[#b7d6bb]" image="/assets/teams/teams_3.png" />
+//           </SwiperSlide>
+//         </Swiper>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+"use client";
+
+import React, { useState, useRef } from "react";
+import Image from "next/image";
+import { teamData } from "@/data/teamData";
+import TeamDetails from "@/components/Team/TeamDetails";
+import { Minus, Plus } from "lucide-react";
+import CommonHeading from "@/utils/CommonHeading";
+
+export default function TeamMobileContainer() {
+  const [activeId, setActiveId] = useState(teamData[0].id);
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  const activeMember =
+    teamData.find((m) => m.id === activeId) || teamData[0];
+
+  const handleSelect = (id: string) => {
+    setActiveId(id);
+
+    // smooth scroll to detail section
+    setTimeout(() => {
+      detailRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 100);
+  };
 
   return (
-    <div className="px-[30px] py-20">
-      {/* Inject custom styles */}
-      <style>{styles}</style>
-      <div className="container relative mobile-heading-2 ">
-        <CommonHeading heading="Driven By Passion, United by Purpose" />
-        {/* <div className="flex items-center gap-4 mt-4 mb-20">
-          
-          <div className="relative flex-1">
-            <div className="custom-progress mt-0" ref={progressBarRef}>
-              <Image
-                ref={dragIconRef}
-                src="/assets/icons/drag.svg"
-                height={30}
-                width={30}
-                alt="drag"
-                className="drag-icon"
-              />
-            </div>
-          </div>
-          <span className="uppercase tracking-[1.4] text-[14px] block">
-            Drag For More View
-          </span>
-          <Image
-            ref={cursorRef}
-            src="/assets/icons/drag.svg"
-            height={30}
-            width={30}
-            alt="drag-cursor"
-            className="custom-cursor"
-          />
-        </div> */}
+    <div className="w-full">
 
-        <Swiper
-          effect="cards"
-          grabCursor={true}
-          modules={[EffectCards, Pagination]}
-          className="mySwiper w-[80%] lg:mt-0 mt-[20px]"
-          pagination={{
-            type: 'progressbar',
-            el: '.custom-progress',
-          }}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-        >
-          <SwiperSlide className="!h-[450px] md:!h-[600px]">
-            <TeamCard bg="bg-[#ecebda]" image="/assets/teams/teams_1.png" />
-          </SwiperSlide>
-          <SwiperSlide className="!h-[450px] md:!h-[600px]">
-            <TeamCard bg="bg-[#90c9a3]" image="/assets/teams/teams_2.png" />
-          </SwiperSlide>
-          <SwiperSlide className="!h-[450px] md:!h-[600px]">
-            <TeamCard bg="bg-[#b7d6bb]" image="/assets/teams/teams_3.png" />
-          </SwiperSlide>
-        </Swiper>
+      {/* 🔹 TOP LIST SECTION */}
+      <div className="bg-[#ECEBDA] px-4 py-6 mt-10">
+         <CommonHeading heading={`Team`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
+
+        <h2 className="text-[26px] leading-[32px] font-light text-[#2D3B2F] mb-6 mt-4">
+          Vision Built. Purpose Led.
+        </h2>
+
+        <div className="flex flex-col gap-5">
+          {teamData.map((member) => {
+            const isActive = member.id === activeId;
+
+            return (
+              <div
+                key={member.id}
+                onClick={() => handleSelect(member.id)}
+                className={`flex items-center gap-4 cursor-pointer transition-all ${
+                  isActive ? "opacity-100" : "opacity-60"
+                }`}
+              >
+                {/* Image */}
+                <div className="w-[140px] h-[140px] relative overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Info */}
+                <div className="flex flex-col pl-2">
+                  <h3 className="text-[15px] font-medium text-[#1E1E1E]">
+                    {member.name}
+                  </h3>
+             
+                  <p className="text-[12px] text-gray-600 mt-1">
+                    ({member.title})
+                  </p>
+
+                  <button className="flex items-center gap-2 mt-2 text-[11px] tracking-[1.5px] text-[#2D3B2F] uppercase">
+                    View Details
+                      <span className="w-4 h-4 px-0.5 rounded-full bg-[#113120] text-white flex items-center justify-center text-lg leading-none shrink-0">
+                                        {isActive ? <Minus /> : <Plus />}
+                                    </span>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
+      {/* 🔹 DETAIL SECTION (Gradient like screenshot) */}
+      <div
+  ref={detailRef}
+  className="relative px-4 py-8 bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/assets/teams/1.jpg')",
+  }}
+>
+  {/* Dark overlay for readability */}
+  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+
+  <div className="relative z-10">
+    <TeamDetails member={activeMember} mobVia={true}/>
+  </div>
+</div>
     </div>
   );
 }

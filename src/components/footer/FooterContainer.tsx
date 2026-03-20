@@ -14,11 +14,12 @@ export default function FooterContainer() {
       </div>
       <figure>
         <Image
-          src={`/assets/logo.png`}
-          alt=""
+          src={`/assets/arqis-black.svg`}
+          alt="logo"
           className="m-auto"
           height={80}
           width={200}
+          unoptimized
         />
       </figure>
       <div className=" border-y-[#00000033] border-y-[1px] my-[20px] py-[20px]  lg:py-[60px]">

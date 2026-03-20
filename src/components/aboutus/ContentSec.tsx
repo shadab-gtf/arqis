@@ -116,6 +116,7 @@ export default function ContentSec() {
 
   return (
     <div className='fade-up mr-auto flex w-full max-w-full flex-col justify-start'>
+       <CommonHeading heading={`About Us`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
       <CommonHeading
         customClass='pb-4 pt-0 text-[#113120] lg:pb-[40px] lg:pr-24 2xl:pr-20'
         heading={data.heading}

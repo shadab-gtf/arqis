@@ -10,11 +10,12 @@ import Pagination from "@/utils/Pagination";
 import FooterContainer from "@/components/footer/FooterContainer";
 import MobHorizontalLayout from "./MobHorizontalLayout";
 import About from "@/components/aboutus/About";
+import TeamMobileContainer from "@/mobcomponents/Teams/Teams";
 
 export default function MobileLayout() {
   return (
     <MobHorizontalLayout>
-      <div className="flex h-[100vh] overflow-hidden  horizontal-section">
+      <div className="flex h-[100dvh] overflow-hidden  horizontal-section">
         <div className="basis-[100%] item grow-0 shrink-0 h-full">
           <LogoSection />
         </div>
@@ -31,7 +32,7 @@ export default function MobileLayout() {
           <FooterContainer />
         </div>
         <div className="basis-[100%]  item grow-0 overflow-y-scroll overflow-x-hidden  shrink-0 h-full  items-center">
-          <TeamContainer />
+          <TeamMobileContainer />
           <Pagination navVal={"Career"} />
           <FooterContainer />
         </div>

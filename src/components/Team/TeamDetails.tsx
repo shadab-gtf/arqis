@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import Paragraph from "@/utils/Paragraph";
 
 interface SubMember {
   id: string;
@@ -21,11 +22,13 @@ interface Member {
 interface TeamDetailsProps {
   member: Member;
   scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
+   mobVia?: boolean;
 }
 
 export default function TeamDetails({
   member,
   scrollContainerRef,
+  mobVia
 }: TeamDetailsProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,15 +110,21 @@ export default function TeamDetails({
   return (
     <div
       ref={containerRef}
-      className="flex flex-col w-full text-white pt-10 lg:pt-20 px-4 md:px-0 max-w-2xl opacity-0"
+      className="flex flex-col w-full text-white pt-6 lg:pt-20 px-4 md:px-0 max-w-2xl opacity-0"
     >
       <div className="text-sm md:text-[15px] leading-[1.8] tracking-wide text-[#E8E8E8]">
         {/* Always show the first paragraph, apply line-clamp when NOT expanded */}
-        <p
+        {/* <p
           className={`transition-all duration-300 ${!isExpanded ? "line-clamp-8" : ""}`}
         >
           {paragraphs[0]}
-        </p>
+        </p> */}
+        <div className={`${!isExpanded ? "line-clamp-8" : ""}`}>
+  <Paragraph
+    customClass={`text-[#E8E8E8] transition-all duration-300`}
+    paragraph={paragraphs[0]}
+  />
+</div>
 
         {/* For the rest, expand them smoothly */}
         {paragraphs.length > 1 && (
@@ -125,9 +134,16 @@ export default function TeamDetails({
             style={{ height: 0, opacity: 0 }}
           >
             <div className="flex flex-col gap-5 pt-5">
-              {paragraphs.slice(1).map((p, i) => (
+              {/* {paragraphs.slice(1).map((p, i) => (
                 <p key={i}>{p}</p>
-              ))}
+              ))} */}
+              {paragraphs.slice(1).map((p, i) => (
+  <Paragraph
+    key={i}
+    customClass={`text-[#E8E8E8]`}
+    paragraph={p}
+  />
+))}
             </div>
           </div>
         )}
@@ -190,7 +206,7 @@ export default function TeamDetails({
           <h3 className=" text-lg md:text-xl  text-[#FFF1DF] tracking-wide tt-light">
             Meet The Guiding Force Behind Our Success And Vision.
           </h3>
-          <div className="mt-2 flex flex-col items-start gap-6 md:flex-row md:items-center md:gap-5">
+          <div className="mt-4 flex flex-row items-start gap-6 md:flex-row md:items-center md:gap-5">
             <div className="relative w-[60px] h-[60px] md:w-[75px] md:h-[75px] rounded-full overflow-hidden flex-shrink-0">
               <Image
                 src={featuredSubMember.image}

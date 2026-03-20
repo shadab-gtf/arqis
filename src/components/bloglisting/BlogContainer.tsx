@@ -6,9 +6,13 @@ import ListingSec from './ListingSec'
 const blogList = [
   {
     image: "/assets/blog/img1.webp",
-    heading: "Sustainable Living Trends in Contemporary Flats Across Noida",
+    heading: "The Future of Commercial Spaces: How Timeless Design Drives Long-Term Success",
     date: "1/31/2025",
-    slug: "1"
+    slug: "1",
+    content: [
+      "First paragraph of blog 1...",
+      "Second paragraph of blog 1..."
+    ]
   },
   {
     image: "/assets/blog/img2.webp",
