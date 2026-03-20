@@ -15,7 +15,7 @@ export default function HeadingLogo() {
     <div className="grid grid-cols-1 lg:grid-cols-2 mb-10">
       <div className="col-span-1 ">
         <div className="lg:w-[70%] fade-up lg:mb-0 mb-[35px] pt-[110px] lg:pt-0">
-          <CommonHeading heading={`Media`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
+          <CommonHeading heading={`Media Centre`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
           <h3 className="text-[30px] md:text-[36px] lg:text-[48px] text-[#FFD38F]  tt-light leading-[1] lg:leading-[1.3] mt-4">
             Headlines. Stories. <br />
             Impact.

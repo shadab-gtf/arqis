@@ -7,7 +7,7 @@ export default function ContentSec() {
     <div className=" m-auto h-[100%] flex flex-col gap-10 justify-start ">
       {/* <div className="d"></div> */}
       <div className="lg:w-[80%] ">
-        <CommonHeading heading={`Career`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
+        <CommonHeading heading={`Careers`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
         <CommonHeading heading={`Join Our Team: Build the Future with Us`} />
 
         <Paragraph
