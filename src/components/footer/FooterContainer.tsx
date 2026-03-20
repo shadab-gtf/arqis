@@ -14,12 +14,13 @@ export default function FooterContainer() {
       </div>
       <figure>
         <Image
-          src={`/assets/arqis-black.svg`}
+          src={`/assets/arqis-black.webp`}
           alt="logo"
           className="m-auto"
           height={80}
           width={200}
           unoptimized
+          onClick={() => gotoFn(0)}
         />
       </figure>
       <div className=" border-y-[#00000033] border-y-[1px] my-[20px] py-[20px]  lg:py-[60px]">

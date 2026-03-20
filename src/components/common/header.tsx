@@ -56,16 +56,16 @@ const Header = () => {
           <div className="flex cursor-pointer mobile-header justify-between items-center">
             <Link className="logo hidden lg:block relative h-[75px] w-[229px]" onClick={() => gotoFn(0)} href={"#"}>
               <Image
-                src="/assets/arqis-black.svg"
+                src="/assets/arqis-black.webp"
                 className="logo-black hide-logo-from-hero h-[75px] w-full"
                 width={229}
-                height={80}
+                height={60}
                 quality={100}
                 alt="logo"
               // sizes="(max-width: 640px) 120px, (max-width: 768px) 85px, 239px"
               />
               <Image
-                src="/assets/arqis-white.svg"
+                src="/assets/arqis-white.webp"
                 className="logo-white hide-logo-from-hero h-[75px] w-full"
                 width={229}
                 height={80}
@@ -92,10 +92,10 @@ const Header = () => {
             }`}
         >
           <Image
-            src="/assets/arqis-black.svg"
-            className="logo-black h-[55px] "
-            width={119}
-            height={55}
+            src="/assets/arqis-black.webp"
+            className="logo-black h-[45px] "
+            width={118}
+            height={45}
             quality={100}
             alt="logo"
             onClick={() => gotoFn(0)}

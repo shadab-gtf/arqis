@@ -264,14 +264,14 @@ export default function TeamMobileContainer() {
     <div className="w-full">
 
       {/* 🔹 TOP LIST SECTION */}
-      <div className="bg-[#ECEBDA] px-4 py-6 mt-10">
+      <div className="bg-[#ECEBDA] px-4 py-6 mt-10 pb-4">
          <CommonHeading heading={`Team`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
 
         <h2 className="text-[26px] leading-[32px] font-light text-[#2D3B2F] mb-6 mt-4">
           Vision Built. Purpose Led.
         </h2>
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-row gap-10 ">
           {teamData.map((member) => {
             const isActive = member.id === activeId;
 
@@ -279,7 +279,7 @@ export default function TeamMobileContainer() {
               <div
                 key={member.id}
                 onClick={() => handleSelect(member.id)}
-                className={`flex items-center gap-4 cursor-pointer transition-all ${
+                className={`flex flex-col gap-4 cursor-pointer transition-all ${
                   isActive ? "opacity-100" : "opacity-60"
                 }`}
               >
@@ -294,7 +294,7 @@ export default function TeamMobileContainer() {
                 </div>
 
                 {/* Info */}
-                <div className="flex flex-col pl-2">
+                <div className="flex flex-col ">
                   <h3 className="text-[15px] font-medium text-[#1E1E1E]">
                     {member.name}
                   </h3>
@@ -303,7 +303,7 @@ export default function TeamMobileContainer() {
                     ({member.title})
                   </p>
 
-                  <button className="flex items-center gap-2 mt-2 text-[11px] tracking-[1.5px] text-[#2D3B2F] uppercase">
+                  <button className="flex items-center gap-2 mt-4 text-[11px] tracking-[1.5px] text-[#2D3B2F] uppercase">
                     View Details
                       <span className="w-4 h-4 px-0.5 rounded-full bg-[#113120] text-white flex items-center justify-center text-lg leading-none shrink-0">
                                         {isActive ? <Minus /> : <Plus />}
