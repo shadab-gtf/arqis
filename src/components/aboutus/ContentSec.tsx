@@ -129,7 +129,7 @@ export default function ContentSec() {
         {data.listing.map((item, index) => (
           <div key={index} className='box text-center'>
             <AnimatedCounter title={item.title} />
-            <p className='desc  mx-auto mt-2  '>
+            <p className='desc tracking-wide  mx-auto mt-2  '>
               {item.desc}
             </p>
           </div>

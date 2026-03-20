@@ -264,7 +264,7 @@ export default function TeamMobileContainer() {
     <div className="w-full">
 
       {/* 🔹 TOP LIST SECTION */}
-      <div className="bg-[#ECEBDA] px-4 py-6 mt-10 pb-4">
+      <div className="bg-[#ECEBDA] px-4 py-6 mt-10 pb-8">
          <CommonHeading heading={`Team`} customClass='!pb-[2px] font-inter !text-[14px] !uppercase !font-semibold'/>
 
         <h2 className="text-[26px] leading-[32px] font-light text-[#2D3B2F] mb-6 mt-4">
