@@ -1,32 +1,34 @@
+"use client"
 import ScrollLayout from '@/utils/ScrollLayout'
 import React, { useRef } from 'react'
 import ContentSec from './ContentSec'
 import ListingSec from './ListingSec'
+import { blogList } from '@/data/blogData'
 
-const blogList = [
-  {
-    image: "/assets/blog/img1.webp",
-    heading: "The Future of Commercial Spaces: How Timeless Design Drives Long-Term Success",
-    date: "1/31/2025",
-    slug: "1",
-    content: [
-      "First paragraph of blog 1...",
-      "Second paragraph of blog 1..."
-    ]
-  },
-  {
-    image: "/assets/blog/img2.webp",
-    heading: "Sustainable Living Trends in Contemporary Flats Across Noida",
-    date: "1/31/2025",
-    slug: "2"
-  },
-  {
-    image: "/assets/blog/img1.webp",
-    heading: "Sustainable Living Trends in Contemporary Flats Across Noida",
-    date: "1/31/2025",
-    slug: "2"
-  },
-];
+// export const blogList = [
+//   {
+//     image: "/assets/blog/img1.webp",
+//     heading: "The Future of Commercial Spaces: How Timeless Design Drives Long-Term Success",
+//     date: "1/31/2025",
+//     slug: "1",
+//     content: [
+//       "First paragraph of blog 1...",
+//       "Second paragraph of blog 1..."
+//     ]
+//   },
+//   {
+//     image: "/assets/blog/img2.webp",
+//     heading: "Sustainable Living Trends in Contemporary Flats Across Noida",
+//     date: "1/31/2025",
+//     slug: "2"
+//   },
+//   {
+//     image: "/assets/blog/img1.webp",
+//     heading: "Sustainable Living Trends in Contemporary Flats Across Noida",
+//     date: "1/31/2025",
+//     slug: "2"
+//   },
+// ];
 
 export default function BlogContainer({ mobVia }) {
   const scrollableRef = useRef(null);
