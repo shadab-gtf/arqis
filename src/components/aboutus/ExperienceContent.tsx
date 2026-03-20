@@ -18,9 +18,9 @@ export default function ExperienceContent({
   const paragraphColor = mobVia ? "text-[#000]" : "text-[#fff]";
 
   return (
-    <div className="parallax px-0 md:px-2 lg:px-6">
+    <div className="parallax px-0 md:px-2 lg:px-6 ">
       <MapSection />
-      <div className="pt-14 mobile-color md:pt-16 lg:pt-[100px]">
+      <div className="pt-8 mobile-color md:pt-16 lg:pt-[50px]">
         <CommonHeading
           customClass={headingColor}
           heading="40+ Years of experience in development "

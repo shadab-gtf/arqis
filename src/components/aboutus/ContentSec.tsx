@@ -121,10 +121,10 @@ export default function ContentSec() {
         heading={data.heading}
       />
       <Paragraph
-        customClass='!mb-0 text-base!  text-[#113120]'
+        customClass='!mb-0 text-base! text-[#113120] '
         paragraph={data.desc}
       />
-      <div className='flex-content grid grid-cols-2 gap-x-4 lg:gap-x-0 gap-y-6 pt-6 sm:grid-cols-3 lg:pt-8 lg:gap-y-15'>
+      <div className='flex-content grid grid-cols-2 gap-x-4 lg:gap-x-0 gap-y-8 pt-12 pb-6 sm:grid-cols-3 lg:pt-8 lg:gap-y-15'>
         {data.listing.map((item, index) => (
           <div key={index} className='box text-center'>
             <AnimatedCounter title={item.title} />

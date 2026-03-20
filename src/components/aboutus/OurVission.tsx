@@ -9,12 +9,12 @@ type OurVissionProps = {
 
 export default function OurVission({ mobVia }: OurVissionProps) {
   return (
-    <div className="pt-12 md:pt-[60px]">
+    <div className="pt-6 md:pt-[60px]">
       <CommonHeading
         customClass={`${mobVia ? "text-[#000]" : "text-[#FFD38F]"}`}
         heading="Our Vission "
       />
-      <div className="mx-auto my-8 md:my-[50px]">
+      <div className="mx-auto my-4 mb-8 md:my-[50px]">
         <Image
           src="/assets/about/our_vission.png"
           alt="experience"

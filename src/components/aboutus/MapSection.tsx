@@ -10,7 +10,7 @@ export default function MapSection() {
     <button
       type="button"
       onClick={() => setShowLocation((prev) => !prev)}
-      className="relative mx-auto block aspect-[29/33] w-full max-w-[320px] overflow-hidden sm:max-w-[420px] md:max-w-[500px] mobile-map lg:max-w-[580px] xl:max-w-[640px] 2xl:max-w-[700px]"
+      className="relative mx-auto block aspect-[29/33] w-full max-w-[320px] overflow-hidden sm:max-w-[420px] md:max-w-[500px] mobile-map lg:max-w-[580px] xl:max-w-[640px] 2xl:max-w-[700px] mt-6"
     >
       <Image
         src="/assets/about/withpin.png"

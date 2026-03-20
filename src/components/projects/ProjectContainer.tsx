@@ -18,6 +18,7 @@ type Project = {
   title: string;
   location: string;
   desc: string;
+  redirect?: boolean; 
 };
 
 const projects: Project[] = [
@@ -27,6 +28,7 @@ const projects: Project[] = [
     thumb: "/assets/projects/arqis-mall.jpg",
     title: "Arqis Mall",
     location: "Sector 129, Noida",
+    redirect: true,
     desc: "Our upcoming mall is designed to be a premier destination, offering a dynamic shopping and entertainment experience.",
   },
   {
@@ -51,6 +53,7 @@ const projects: Project[] = [
     thumb: "/assets/projects/rajbagh.jpg",
     title: "Raj Bagh",
     location: "GT Road Raj Bagh Ghaziabad",
+    redirect: true,
     desc: "Our upcoming project at GT Road, Raj Bagh, Ghaziabad is set to become a landmark destination.",
   },
 ];
@@ -233,7 +236,7 @@ export default function ProjectContainer() {
         </div>
 
         {/* MOBILE SLIDER */}
-        <div className="block md:hidden pb-[40px] w-full mt-4 mobile-projects-swiper">
+        <div className="block md:hidden w-full mt-4 mobile-projects-swiper">
           <Swiper
             spaceBetween={15}
             slidesPerView={1.15}
@@ -245,13 +248,13 @@ export default function ProjectContainer() {
               <SwiperSlide key={`mob-${project.id}`}>
                 <div className="flex flex-col gap-5">
                   <Image
-                    className="w-full h-[380px] object-cover"
+                    className="w-full h-[290px] object-cover"
                     src={project.image}
                     width={500}
                     height={500}
                     alt={project.title}
                   />
-                  <div className="flex flex-col justify-between py-2 gap-8">
+                  <div className="flex flex-col justify-between py-2 gap-3.5">
                     <div>
                       <h3 className="uppercase text-[16px] tracking-[2px] text-black font-medium mb-2">
                         {project.title}
@@ -260,11 +263,14 @@ export default function ProjectContainer() {
                         {project.desc}
                       </p>
                     </div>
-                    <Redirect_Link
+                    {project.redirect && (
+                     <Redirect_Link
                       text="Explore Project"
                       customClass="project-card-cta !text-black text-[14px] uppercase tracking-widest"
                       link=""
                     />
+)}
+                    
                   </div>
                 </div>
               </SwiperSlide>

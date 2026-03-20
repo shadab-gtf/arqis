@@ -65,25 +65,26 @@ const handlePrev = () => {
       onClick={handlePrev}
       className="w-full cursor-pointer border-[1px] border-r-0 border-[#ffffff4d] bg-[var(--primary-green-color)] py-[20px]"
     >
-      <div className="container text-center">
-        <span className="uppercase text-white text-[14px] tracking-[2.5]">
-          Previous
-        </span>
-        <Image
+      <div className="container text-center flex gap-2 justify-center items-center">
+         <Image
           src="/assets/icons/arrow-white.svg"
-          width={34}
-          height={34}
-          className="m-auto rotate-180"
+          width={20}
+          height={20}
+          className="mx-[6px] rotate-180"
           alt="Prev Arrow"
         />
+        <span className="uppercase text-white text-[12px] tracking-[2.5] text-center justify-center ">
+          Previous
+        </span>
+       
       </div>
     </button>
         <button
       type="button"
       className="w-full cursor-pointer border-[1px] border-r-0 border-l-0 border-[#ffffff4d] bg-[var(--primary-green-color)] py-[20px]"
     >
-      <div className="container text-center">
-        <span className="uppercase text-white text-[14px] tracking-[2.5]">
+      <div className="container text-center ">
+        <span className="uppercase text-white text-[14px] tracking-[2.5] ">
           {CURRENT_PAGE_MAP[navVal] }
         </span>
        
@@ -94,16 +95,16 @@ const handlePrev = () => {
       onClick={handleNavigation}
       className="w-full pagination cursor-pointer border-l-0 border-[1px] border-[#ffffff4d] bg-[var(--primary-green-color)] py-[20px]"
     >
-      <div className="container text-center">
-        <span className="uppercase next-text text-white text-[14px] tracking-[2.5]">
+      <div className="container text-center flex gap-[2px] justify-center items-center">
+        <span className="uppercase next-text text-white text-[12px] tracking-[2.5]">
           Next
         </span>
        
         <Image
           src="/assets/icons/arrow-white.svg"
-          width={34}
-          height={34}
-          className="m-auto next-arrow"
+          width={20}
+          height={20}
+          className="mx-[6px] next-arrow"
           alt="Arrow White"
         />
       </div>

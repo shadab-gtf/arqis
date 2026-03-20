@@ -19,7 +19,7 @@ const initialFormData: ContactFormData = {
   email: "",
   phone: "",
   message: "",
-  agreeToTerms: false,
+  agreeToTerms: true,
 };
 
 export default function Form() {

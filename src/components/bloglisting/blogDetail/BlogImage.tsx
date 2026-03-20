@@ -8,7 +8,7 @@ export default function BlogImage({ image, data }) {
     <div className='text-center'>
       <button
         onClick={() => window.location.replace("/#blogs")}
-        className="flex items-center justify-end cursor-pointer gap-2 tracking-[1px] uppercase pb-10"
+        className="flex mt-2 items-center justify-end cursor-pointer gap-2 tracking-[1px] uppercase pb-10"
       >
         <Image
           src={"/assets/icons/arrow_left.png"}
@@ -22,7 +22,7 @@ export default function BlogImage({ image, data }) {
       <Image
         src={image || '/assets/blog/img1-lg.webp'}
         alt='blog'
-        className='w-[100%] m-auto mb-20'
+        className='w-[100%] m-auto mb-10'
         height={600}
         width={600}
       />

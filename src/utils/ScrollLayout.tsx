@@ -44,11 +44,11 @@ const ScrollLayout = ({
   }, []);
 
   return (
-    <div className={`grid grid-cols-1 relative w-full overflow-hidden pt-[40px] md:grid-cols-2 md:pt-0 ${containerClassName}`}>
+    <div className={`grid grid-cols-1 relative w-full overflow-hidden pt-[60px] md:grid-cols-2 md:pt-0 ${containerClassName}`}>
       <div className={isPattern + ` col-span-1 relative z-10 fade-up my-auto mobile-background bg-[#FFF1DF] px-5 py-12 sm:px-8 sm:py-16 md:h-screen lg:px-2 lg:py-24 large-desktop`}>
         <div className={`custom-container ${leftContentClassName}`}>
           {leftContent}
-          {isShowDrag && <DragComponent draggableAlign={draggableAlign} centerDragVia={centerDragVia} scrollableRef={scrollableRef} />}
+          {isShowDrag && <DragComponent draggableAlign={draggableAlign} custom-container ={centerDragVia} scrollableRef={scrollableRef} />}
         </div>
       </div>
       <div
@@ -58,7 +58,7 @@ const ScrollLayout = ({
       <div
         ref={scrollableRef}
         data-scroll='vertical'
-        className="col-span-1 relative z-3 scrollable-container dark-section parallax overflow-visible px-5 pb-12 pt-12 sm:px-8 sm:pt-16 md:h-screen md:max-h-screen md:overflow-x-hidden md:overflow-y-scroll lg:px-10 lg:pb-0 lg:pt-14"
+        className="col-span-1 relative z-3 scrollable-container dark-section parallax overflow-visible px-5 pt-12 sm:px-8 sm:pt-16 md:h-screen md:max-h-screen md:overflow-x-hidden md:overflow-y-scroll lg:px-10 lg:pb-0 lg:pt-14"
       >
         <div className='lg:py-0'>
           {rightContent}

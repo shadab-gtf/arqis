@@ -106,7 +106,7 @@ const Header = () => {
               <span className="uppercase text cursor-pointer span_1  tracking-[2px]">
                 Menu
               </span>
-              <span className="border-[50%] cursor-pointer span_2  h-[18px] w-[18px] rounded-full block bg-[#000] circle-pointer"></span>
+              <span className="border-[50%] cursor-pointer span_2  h-[18px] w-[18px] rounded-full block bg-[#000] circle-pointer circ"></span>
             </div>
           </div>
         </div>

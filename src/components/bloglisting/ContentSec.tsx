@@ -8,11 +8,10 @@ const data = {
 export default function ContentSec() {
   return (
     <div className="fade-up m-auto h-[100%] flex flex-col gap-10 justify-start">
-      <div className="d"></div>
       <div className="lg:w-[80%] ">
-        <CommonHeading customClass={""} heading={data.heading} />
+        <CommonHeading customClass={"!pb-0"} heading={data.heading} />
         <Paragraph
-          customClass="lg:mt-10 desktop-margin lg:text-lg!  md:mt-8 sm:mt-7 lg:mb-15 md:mb-10 sm:mb-8 text-[#113120]  "
+          customClass="lg:mt-10 desktop-margin lg:text-lg!  md:mt-8 sm:mt-[1px] lg:mb-15 md:mb-10 sm:mb-0 text-[#113120]  "
           paragraph={data.desc}
         />
       </div>

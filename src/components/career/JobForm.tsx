@@ -143,7 +143,7 @@ export default function Form() {
 
         <div className="input-container mb-[15px]">
           <select
-            className={`bg-[#fff] w-[100%] placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""} appearance-none`}
+            className={`bg-[#fff] text-black/60 text-sm uppercase w-full placeholder:uppercase placeholder:text-sm py-[15px] px-[20px] placeholder:text-[#000] ${errors.phone ? "border-red-500" : ""} appearance-none`}
             name="duration"
             value={formData.duration}
             onChange={handleChange}
@@ -187,15 +187,15 @@ export default function Form() {
         </div>
 
         <div className="input-container submit-btn inline-flex pt-[15px]">
-          <button type="submit" className="uppercase tracking-[1.2] text-white cursor-pointer">
+          <button type="submit" className="uppercase text-[14px] tracking-widest text-white cursor-pointer">
             Submit Now
           </button>
           <Image
             src={`/assets/icons/arrow-tilt-white.png`}
             className="me-10 objrct-contain"
             alt="arrow title"
-            height={35}
-            width={35}
+            height={25}
+            width={25}
           />
         </div>
       </form>

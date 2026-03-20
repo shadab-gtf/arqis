@@ -7,7 +7,7 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
 
     return (
         <>
-            <div className='lg:pt-16 pt-[20px] pb-[80px] lg:pb-0 grid gap-y-16 md:gap-y-44 max-w-full md:max-w-[65%] justify-end mx-auto' id="blog-listing">
+            <div className='lg:pt-16 pt-[40px]  lg:pb-0 grid gap-y-10 md:gap-y-44 max-w-full md:max-w-[65%] justify-end mx-auto' id="blog-listing">
                 {blogList.map((item: any, index: number) => <div
                     key={index}
                     className='p-4 bg-[#fff1df]'
@@ -21,7 +21,7 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
                             className='w-full object-cover'
                         />
                     </div>
-                    <div className='footer'>
+                    <div className='footer '>
                         <h3 className='capitalize py-4 lg:text-[17px] text-[16px] tracking-[1px]'>{item.heading}</h3>
                         <div className='flex items-center text-[12px] lg:text-[14px] tracking-[1px] opacity-50'>
                             <span className='block'>{item.date} | Blog </span>
@@ -29,7 +29,7 @@ export default function ListingSec({ blogList, mobVia }: { blogList: any; mobVia
                         </div>
                         <Link
                             href={`/blog/${item.slug}`}
-                            className='flex items-center py-8 uppercase read-more tracking-[1px] gap-2'
+                            className='flex items-center pt-8 pb-2 uppercase read-more tracking-[1px] gap-2'
                             onClick={() => {
                                 if (typeof window !== "undefined") {
                                     window.sessionStorage.setItem("lastSection", "4");

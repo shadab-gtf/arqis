@@ -4,8 +4,8 @@ import CommonHeading from "@/utils/CommonHeading";
 import Paragraph from "@/utils/Paragraph";
 export default function ContentSec() {
   return (
-    <div className=" m-auto h-[100%] flex flex-col gap-10 justify-start">
-      <div className="d"></div>
+    <div className=" m-auto h-[100%] flex flex-col gap-10 justify-start ">
+      {/* <div className="d"></div> */}
       <div className="lg:w-[80%] ">
         <CommonHeading heading={`Join Our Team: Build the Future with Us`} />
 

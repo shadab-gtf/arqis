@@ -7,6 +7,7 @@ import ScrollLayout from "@/utils/ScrollLayout";
 import OurMission from "./OurMission";
 import OurVission from "./OurVission";
 import Redirect_Link from "@/utils/Redirect_txt";
+import CommonHeading from "@/utils/CommonHeading";
 
 type AboutProps = {
   mobVia?: number | boolean;
